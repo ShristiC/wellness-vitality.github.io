@@ -3,12 +3,12 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import "./App.css";
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import CoachingPage from './pages/CoachingPage';
-import ContactPage from './pages/ContactPage';
+// import CoachingPage from './pages/CoachingPage';
+// import ContactPage from './pages/ContactPage';
 import DiscoveryCallPage from './pages/DiscoveryCallPage';
-import RecipesPage from './pages/RecipesPage';
-import TestimonialsPage from './pages/TestimonialsPage';
-import WorkshopsPage from './pages/WorkshopsPage';
+// import RecipesPage from './pages/RecipesPage';
+// import TestimonialsPage from './pages/TestimonialsPage';
+// import WorkshopsPage from './pages/WorkshopsPage';
 
 function App() {
   return (
