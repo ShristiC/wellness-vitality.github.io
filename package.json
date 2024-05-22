@@ -2,23 +2,25 @@
   "homepage": "https://github.com/ShristiC/wellness-vitality.github.io",
   "name": "wellness-n-vitality",
   "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/plugin-transform-runtime": "^7.24.3",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/preset-typescript": "^7.24.1",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "typescript": "^5.4.5"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "tsc && node index.js",
+    "build": "tsc"
   },
   "dependencies": {
+    "@babel/runtime": "^7.24.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1",
-    "react-scripts": "^5.0.1"
+    "react-router-dom": "^6.23.1"
   },
   "eslintConfig": {
     "extends": [
