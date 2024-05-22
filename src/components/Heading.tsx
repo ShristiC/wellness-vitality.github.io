@@ -1,4 +1,4 @@
-import { StyledRow } from "./Layouts";
+import { StyledRow } from "./Styles/Layouts";
 import Logo from "./Logo";
 import LogoSubtitle from "./LogoSubtitle";
 import MenuItem from "./MenuItem";
@@ -10,7 +10,7 @@ function Heading() {
                 <Logo />
                 <LogoSubtitle variant='heading' />
             </div>
-            <MenuItem variant='horizontal'/>
+            <MenuItem variant='horizontal' />
         </StyledRow>
     );
 }

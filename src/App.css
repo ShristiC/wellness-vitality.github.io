@@ -31,3 +31,10 @@ a:hover {
 .left {
   left: 10px;
 }
+
+body {
+  margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
