@@ -40,7 +40,7 @@ const ContentWrap = styled.div<{$includeBorder:boolean}>`
     gap: 5px;
     height: 425x;
     align-content: center;
-    border: ${(props) => props.$includeBorder ? '2px solid #aed581' : '0';
+    border: ${(props) => props.$includeBorder ? '2px solid #aed581' : '0'};
 `;
 
 export default ScheduleDiscovery;
