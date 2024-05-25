@@ -11,7 +11,7 @@ function HomePage() {
 
             <ContainedContent>
                 <StyledImage src={CoverImage} alt="assortment of colorful fruits and nuts on a table" />
-                <ScheduleDiscovery />
+                <ScheduleDiscovery includeBorder={false}/>
             </ContainedContent>
             <h2>The Functional Medicine Approach</h2>
             <p>Functional Medicine is a proactive lifestyle based approach attempts to understand the root cause of chronic diseases and support the unique expression of health and vitality for each individual. It addresses the whole person, not just an isolated set of symptoms.</p>
@@ -45,6 +45,8 @@ const ContainedContent = styled(StyledRow)`
     margin: 10px 0px;
     border: 2px solid transparent;
     max-height: 400;
+    border: 2px solid #aed581;
+    border-radius: 8px;
 `;
 
 const StyledImage = styled.img`
