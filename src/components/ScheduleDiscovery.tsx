@@ -1,8 +1,12 @@
 import styled from "@emotion/styled";
 
-function ScheduleDiscovery() {
+interface IScheduleDiscoveryProps {
+    includeBorder?: boolean;
+}
+
+function ScheduleDiscovery({includeBorder=true}:IScheduleDiscoveryProps) {
     return (
-        <ContentWrap>
+        <ContentWrap $includeBorder={includeBorder}>
             <h3>Schedule a Discovery Call!</h3>
             <LeftAlignedParagraph>Do you struggle with insulin resistance, ineffective medicine, IBS, arthritis, chronic pain, unhealthy relationship with weight, or have trouble sleeping?</LeftAlignedParagraph>
             <LeftAlignedParagraph>You are not alone and it is not too late! Let's work together to take charge of your life and help you live your most vibrant life. </LeftAlignedParagraph>
@@ -30,13 +34,13 @@ const LeftAlignedParagraph = styled.p`
     text-align: left;
 `;
 
-const ContentWrap = styled.div`
+const ContentWrap = styled.div<{$includeBorder:boolean}>`
     padding: 20px;
     border-radius: 8px;
     gap: 5px;
     height: 425x;
     align-content: center;
-    border: 2px solid #aed581;
+    border: ${(props) => props.$includeBorder ? '2px solid #aed581' : '0';
 `;
 
 export default ScheduleDiscovery;
