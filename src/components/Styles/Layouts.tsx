@@ -6,7 +6,6 @@ export const StyledRow = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    flex: 1;
 `;
 
 export const StyledColumn = styled(StyledRow)`
