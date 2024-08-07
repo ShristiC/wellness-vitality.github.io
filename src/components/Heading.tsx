@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { Row } from "./Styles/Layout";
-import NavigationBar from "./NavigationBar";
-import Logo from "./Logo";
 import { theme } from "./Constants/Colors";
+import Logo from "./Logo";
+import NavigationBar from "./NavigationBar";
+import { PaddingOrMargin, Row, TopLayer } from "./Styles/Layout";
 
 export default function Heading() {
     return (
@@ -17,17 +17,18 @@ export default function Heading() {
 
 const HeadingRow = styled(Row)`
     justify-content: space-between;
-    flex: 1;
     height: 100px;
     background-color: ${theme.palette.background.paper};
+    padding: ${PaddingOrMargin.small}px 0px;
+    z-index: ${TopLayer};
     position: absolute;
+    width: 100%;
     top: 0;
     left: 0;
-    width: 100%;
-    padding: 10px 0px;
 `;
 
 const NavigationWrap = styled.div`
     width: 50%;
-    padding-top: 27px;
+    position: relative;
+    top: 25%;
 `;

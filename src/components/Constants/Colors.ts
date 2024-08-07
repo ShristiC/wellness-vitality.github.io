@@ -1,7 +1,8 @@
 import { createTheme } from "@mui/material";
 
-const darkGreen = '#517629';
-const white = '#FFFFFF';
+export const darkGreen = '#517629';
+export const white = '#FFFFFF';
+export const black = '#000000';
 
 export const theme = createTheme({
     palette: {
@@ -10,5 +11,9 @@ export const theme = createTheme({
             paper: white,
         },
         getContrastText: ((background) => background === 'default' ? white : darkGreen),
+        text: {
+            primary: black,
+            secondary: white,
+        }
     },
 });

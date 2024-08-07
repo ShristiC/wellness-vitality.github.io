@@ -1,95 +1,90 @@
 import styled from '@emotion/styled';
 import HomeCoverImg from '../assets/cover/Family Holding Hands (HOME LANDING).webp';
 import { theme } from './Constants/Colors';
-import { TypographyConstants } from './Constants/Typography';
-import { ActionButton } from './StyledCore';
+import { Subtitle, Title, Weights } from './Constants/Typography';
 import { LogoIcon } from './Logo';
+import { ActionButton } from './StyledCore';
+import { BorderRadius, PaddingOrMargin } from './Styles/Layout';
 
-export default function CoverImage() {
+export default function CoverComponent() {
     return (
-        <>
-            <StyledCover src={HomeCoverImg} alt="Family of 3 holding hands and jumping together" />
+        <FixedTopWrapper>
+            <CoverImage src={HomeCoverImg} alt="Family of 3 holding hands and jumping together" />
             <BlurContent />
-            <ContentWrap>
-                <Title>Let's take charge of<OutlineTitle as="span"> OUR </OutlineTitle> lives</Title>
-                <Subtitle>1-1 Functional Nutrition Coaching</Subtitle>
+            <CenterContent>
+                <CoverTitle>Let's take charge of<OutlineTitle as="span"> OUR </OutlineTitle> lives</CoverTitle>
+                <CoverSubtitle>1-1 Functional Nutrition Coaching</CoverSubtitle>
                 <ActionButton $variant='paper'>SCHEDULE A FREE DISCOVERY CALL</ActionButton>
-            </ContentWrap>
+            </CenterContent>
             <IconWrap>
                 <LogoIcon />
             </IconWrap>
-        </>
+        </FixedTopWrapper>
     );
 }
 
-const StyledCover = styled.img`
+const FixedTopWrapper = styled.div`
     width: 100%;
-    z-index: -210;
-    transform: rotateY(180deg);
-    position: absolute;
     top: 0;
     left: 0;
+    position: absolute;
+    display: inline-block;
+`;
+
+const CoverImage = styled.img`
+    width: 100%;
+    transform: rotateY(180deg);
     filter: brightness(70%);
     clip-path: ellipse(95% 97% at 50% 0%);
+    display: block;
 `;
 
-const BlurContent = styled.div`
+const CenterContent = styled.div`
     position: absolute;
-    top: 275px;
-    left: 300px;
-    background-color: black;
-    border-radius: 190px;
-    width: 60%;
-    padding: 15px;
-    filter: opacity(20%) blur(40px);
-    height: 450px;
-    z-index: -100px;
-`;
-
-const ContentWrap = styled.div`
-    border-radius: 190px;
+    top: 300px;
     left: 20%;
-    right: 20%;
-    z-index: 100px;
+    width: 60%;
+    border-radius: ${BorderRadius.pill};
     text-align: center;
-    position: absolute;
-    top: 275px;
-    font-family: 'inter';
-    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: ${PaddingOrMargin.extraLarge}px;
+    align-items: center;
+    height: 50%;
 `;
 
-const Title = styled.h1`
+const BlurContent = styled(CenterContent)`
+    background-color: black;
+    padding: ${PaddingOrMargin.medium};
+    filter: opacity(20%) blur(40px);
+`;
+
+const CoverTitle = styled(Title)`
     color: ${theme.palette.getContrastText('default')};
-    font-size: ${TypographyConstants.coverTitle}px;
-    font-weight: 600;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-    text-shadow: 0 0 4px black;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: ${theme.palette.text.primary};
+    text-shadow: 0 0 4px ${theme.palette.text.primary};
     overflow-wrap: normal;
-    margin: 15px;
 `;
 
 const OutlineTitle = styled(Title)`
     -webkit-text-stroke-width: 4px;
-    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-color: ${theme.palette.text.secondary};
     color: transparent;
     text-shadow: none;
-    font-weight: 900;
+    font-weight: ${Weights.bold};
 `;
 
-const Subtitle = styled.h2`
+const CoverSubtitle = styled(Subtitle)`
     color: ${theme.palette.getContrastText('default')};
-    font-size: ${TypographyConstants.default}px;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-    font-weight: 900;
-    margin: 40px;
+    -webkit-text-stroke-color: ${theme.palette.text.primary};
+    text-shadow: 0 0 4px ${theme.palette.text.primary};
+    letter-spacing: 1px;
 `;
 
 const IconWrap = styled.div`
-    z-index: 100px;
     left: 45%;
     position: absolute;
     top: 775px;
-    font-family: 'inter';
 `;
