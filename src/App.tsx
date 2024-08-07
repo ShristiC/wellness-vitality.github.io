@@ -1,11 +1,18 @@
 // src/App.tsx
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import FillerPage from "./pages/FillerPage";
+import HomePage from "./components/Pages/Home";
 
 function App() {
   return (
     <div className="App">
+      {/* <Heading /> */}
       {/* <HomePage /> */}
+      <Router>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+        </Routes>
+      </Router>
       {/* <Router>
         <Routes>
           <Route path='/' element={<HomePage />} />
@@ -18,7 +25,7 @@ function App() {
           <Route path='/discovery' element={<DiscoveryCallPage />} />
         </Routes>
       </Router> */}
-      <FillerPage />
+      {/* <FillerPage /> */}
     </div>
   );
 }
