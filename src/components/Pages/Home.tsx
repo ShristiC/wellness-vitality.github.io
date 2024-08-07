@@ -1,4 +1,4 @@
-import CoverComponent from "../CoverImage";
+import CoverComponent from "../CoverComponent";
 import Heading from "../Heading";
 
 export default function HomePage() {
