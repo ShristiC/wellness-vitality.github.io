@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import HomeCoverImg from '../assets/cover/Family Holding Hands (HOME LANDING).webp';
 import { theme } from './Constants/Colors';
-import { Subtitle, Title, Weights } from './Constants/Typography';
+import { ContentTextBold, Title, Weights } from './Constants/Typography';
 import { LogoIcon } from './Logo';
 import { ActionButton } from './StyledCore';
 import { BorderRadius, PaddingOrMargin } from './Styles/Layout';
@@ -28,7 +28,6 @@ const FixedTopWrapper = styled.div`
     top: 0;
     left: 0;
     position: absolute;
-    display: inline-block;
 `;
 
 const CoverImage = styled.img`
@@ -75,7 +74,7 @@ const OutlineTitle = styled(Title)`
     font-weight: ${Weights.bold};
 `;
 
-const CoverSubtitle = styled(Subtitle)`
+const CoverSubtitle = styled(ContentTextBold)`
     color: ${theme.palette.getContrastText('default')};
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: ${theme.palette.text.primary};
