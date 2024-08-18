@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
-import { theme } from "./Constants/Colors";
+import { theme } from "./Core/Colors";
 import Logo from "./Logo";
 import NavigationBar from "./NavigationBar";
-import { PaddingOrMargin, Row, TopLayer } from "./Styles/Layout";
+import { PaddingOrMargin, Row, TopLayer } from "./Core/Layout";
 
 export default function Heading() {
     return (
         <HeadingRow>
-            <Logo />
+            <Logo size={90} margin="10px"/>
             <NavigationWrap>
                 <NavigationBar />
             </NavigationWrap>
@@ -17,9 +17,9 @@ export default function Heading() {
 
 const HeadingRow = styled(Row)`
     justify-content: space-between;
-    height: 100px;
+    height: 120px;
     background-color: ${theme.palette.background.paper};
-    padding: ${PaddingOrMargin.small}px 0px;
+    /* padding: ${PaddingOrMargin.small}px ${PaddingOrMargin.small}px; */
     z-index: ${TopLayer};
     position: absolute;
     width: 100%;

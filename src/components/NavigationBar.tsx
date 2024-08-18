@@ -1,5 +1,5 @@
-import { Row } from "./Styles/Layout";
-import { ActionButton, CoreButton } from "./StyledCore";
+import { Row } from "./Core/Layout";
+import { ActionButton, CoreButton } from "./CoreButtons";
 
 interface INavigationItem {
     name: string,
@@ -23,7 +23,7 @@ export default function NavigationBar() {
                     {item.name}
                 </CoreButton>
             })}
-            <ActionButton $variant="default">LEARN MORE</ActionButton>
+            <ActionButton $variant="default">Learn More</ActionButton>
         </Row>
     );
 }

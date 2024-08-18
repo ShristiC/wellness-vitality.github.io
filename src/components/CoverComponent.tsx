@@ -1,23 +1,26 @@
 import styled from '@emotion/styled';
-import HomeCoverImg from '../assets/cover/Family Holding Hands (HOME LANDING).webp';
-import { theme } from './Constants/Colors';
-import { ContentTextBold, Title, Weights } from './Constants/Typography';
-import { LogoIcon } from './Logo';
-import { ActionButton } from './StyledCore';
-import { BorderRadius, PaddingOrMargin } from './Styles/Layout';
+import HomeCoverImg from '../assets/cover/Family Holding Hands Landing.webp';
+import { theme } from './Core/Colors';
+import { ContentTextBold, Title, Weights } from './Core/Typography';
+import { WhiteLogoIcon } from './Logo';
+import { ActionButton } from './CoreButtons';
+import { BorderRadius, PaddingOrMargin } from './Core/Layout';
 
 export default function CoverComponent() {
     return (
         <FixedTopWrapper>
             <CoverImage src={HomeCoverImg} alt="Family of 3 holding hands and jumping together" />
-            <BlurContent />
+            <BlurContent/>
             <CenterContent>
-                <CoverTitle>Let's take charge of<OutlineTitle as="span"> OUR </OutlineTitle> lives</CoverTitle>
+                <div>
+                    <CoverTitle>Let's take charge</CoverTitle>
+                    <CoverTitle>of<OutlineTitle as="span"> OUR </OutlineTitle> lives</CoverTitle>
+                </div>
                 <CoverSubtitle>1-1 Functional Nutrition Coaching</CoverSubtitle>
-                <ActionButton $variant='paper'>SCHEDULE A FREE DISCOVERY CALL</ActionButton>
+                <ActionButton $variant='paper'>Schedule a FREE Discovery Call</ActionButton>
             </CenterContent>
             <IconWrap>
-                <LogoIcon />
+                <WhiteLogoIcon />
             </IconWrap>
         </FixedTopWrapper>
     );
@@ -55,15 +58,14 @@ const CenterContent = styled.div`
 const BlurContent = styled(CenterContent)`
     background-color: black;
     padding: ${PaddingOrMargin.medium};
-    filter: opacity(20%) blur(40px);
+    filter: opacity(30%) blur(40px);
 `;
 
 const CoverTitle = styled(Title)`
     color: ${theme.palette.getContrastText('default')};
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: ${theme.palette.text.primary};
     text-shadow: 0 0 4px ${theme.palette.text.primary};
-    overflow-wrap: normal;
 `;
 
 const OutlineTitle = styled(Title)`
@@ -78,8 +80,8 @@ const CoverSubtitle = styled(ContentTextBold)`
     color: ${theme.palette.getContrastText('default')};
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: ${theme.palette.text.primary};
-    text-shadow: 0 0 4px ${theme.palette.text.primary};
-    letter-spacing: 1px;
+    text-shadow: 0 1px 0px ${theme.palette.text.primary};
+    letter-spacing: 0cap.5;
 `;
 
 const IconWrap = styled.div`

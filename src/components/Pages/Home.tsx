@@ -1,6 +1,10 @@
 import CoverComponent from "../CoverComponent";
+import Footer from "../Footer";
 import Heading from "../Heading";
+import InformationComponent from "../InformationComponent";
 import PainPoints from "../PainPoints";
+import SpecialtiesAndServices from "../SpecialtiesAndServices";
+import TestimonialsFeatureComponent from "../TestimonialsFeatureComponent";
 
 export default function HomePage() {
     return (
@@ -8,6 +12,10 @@ export default function HomePage() {
             <Heading />
             <CoverComponent />
             <PainPoints />
+            <InformationComponent />
+            <SpecialtiesAndServices />
+            <TestimonialsFeatureComponent />
+            <Footer />
         </>
     );
 }
