@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ChevronLeft, ChevronRight, Rotate90DegreesCcw } from "@mui/icons-material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { PropsWithChildren } from "react";
 import { darkGreen } from "./Core/Colors";
 import { Row } from "./Core/Layout";
