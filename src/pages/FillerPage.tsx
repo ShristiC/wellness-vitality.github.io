@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { EmailOutlined, FacebookOutlined, Instagram, YouTube } from "@mui/icons-material";
 import Logo from "../components/Logo";
-import { StyledRow } from "../components/Styles/Layouts";
 
 export default function FillerPage() {
     const fontSize = 50;
@@ -54,4 +53,12 @@ const StyledButton = styled.a`
     font-size: 1em;
     font-weight: 500;
     text-decoration: none;
+`;
+
+export const StyledRow = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 `;
