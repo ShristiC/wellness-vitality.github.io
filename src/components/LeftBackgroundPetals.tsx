@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import LeftBackgroundFlower from '../assets/cover/Left Petals.svg';
 export default function BackgroundPetals () {
     return (
-        <Flower src={LeftBackgroundFlower} />
+        <Flower src={LeftBackgroundFlower} role="presentation"/>
     );
 }
 

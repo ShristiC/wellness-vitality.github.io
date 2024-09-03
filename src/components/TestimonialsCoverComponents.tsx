@@ -1,26 +1,18 @@
 import styled from '@emotion/styled';
-import HomeCoverImg from '../assets/cover/Family Holding Hands Landing.webp';
+import TestimonialsCover from '../assets/cover/Testimonials.jpeg';
 import { theme } from './Core/Colors';
-import { ContentTextBold, Title, Weights } from './Core/Typography';
-import { WhiteLogoIcon } from './Logo';
-import { ActionButton } from './CoreButtons';
 import { BorderRadius, PaddingOrMargin } from './Core/Layout';
+import { ContentTextBold, Title } from './Core/Typography';
+import { WhiteLogoIcon } from './Logo';
 
-export default function CoverComponent() {
+export default function TestimonialsCoverComponent() {
     return (
         <FixedTopWrapper>
-            <CoverImage src={HomeCoverImg} alt="Family of 3 holding hands and jumping together" />
+            <CoverImage src={TestimonialsCover} alt="Family of 3 holding hands and jumping together" />
             <BlurContent/>
             <CenterContent>
-                <div>
-                    <CoverTitle>Let's take charge</CoverTitle>
-                    <CoverTitle>of<OutlineTitle as="span"> OUR </OutlineTitle> lives</CoverTitle>
-                </div>
-                <CoverSubtitle>1-1 Functional Nutrition Coaching</CoverSubtitle>
-                <ActionButton $variant='paper' onClick={(e) => {
-                        e.preventDefault();
-                        window.open("https://my.practicebetter.io/#/5c6a01b7627db308702273dc/bookings?step=services", "_blank", "noreferrer");
-                    }}>Schedule a FREE Discovery Call</ActionButton>
+                <CoverTitle>Success Stories</CoverTitle>
+                <CoverSubtitle>Better Sleep | Healthy Gut | More Energy | Confidence</CoverSubtitle>
             </CenterContent>
             <IconWrap>
                 <WhiteLogoIcon />
@@ -46,7 +38,7 @@ const CoverImage = styled.img`
 
 const CenterContent = styled.div`
     position: absolute;
-    top: 300px;
+    top: 350px;
     left: 20%;
     width: 60%;
     border-radius: ${BorderRadius.pill};
@@ -67,14 +59,6 @@ const BlurContent = styled(CenterContent)`
 const CoverTitle = styled(Title)`
     color: ${theme.palette.getContrastText('default')};
     text-shadow: 0 0 4px ${theme.palette.text.primary};
-`;
-
-const OutlineTitle = styled(Title)`
-    -webkit-text-stroke-width: 4px;
-    -webkit-text-stroke-color: ${theme.palette.text.secondary};
-    color: transparent;
-    text-shadow: none;
-    font-weight: ${Weights.bold};
 `;
 
 const CoverSubtitle = styled(ContentTextBold)`

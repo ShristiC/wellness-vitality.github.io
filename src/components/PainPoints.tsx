@@ -27,7 +27,7 @@ export default function PainPoints() {
         <PainPointsWrapper>
             <BackgroundPetals/>
             <LeftBackgroundPetals />
-            <GreenArrow src ={GreenArrowVector}/>
+            <GreenArrow src ={GreenArrowVector} alt="curved arrow pointing starting from Pain Points to Resonating Points" />
             <PainPointRow>
                 <Resonate question="Are you..." bulletPoints={painPoints}/>
                 <ImagineContentWrapper>

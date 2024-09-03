@@ -1,21 +1,21 @@
 import styled from "@emotion/styled";
 import { theme } from "./Core/Colors";
 import { BorderRadius } from "./Core/Layout";
-import { BedOutlined } from "@mui/icons-material";
 import { ContentText, FontSizes } from "./Core/Typography";
 
 interface IPillarProps {
     text: string;
     icon: string;
+    alt: string;
 }
 
-export default function Pillar ({text, icon}: IPillarProps) {
+export default function Pillar ({text, icon, alt}: IPillarProps) {
     return (
         <Wrapper>
             <OuterPillarRow/>
                 <InnerPillarRow/>
                     <InnerContent>
-                        <img src={icon} sizes="24" />
+                        <img src={icon} sizes="24" alt={alt} />
                         <SmallContentText>{text}</SmallContentText>
                     </InnerContent>
                 <InnerPillarRow/>

@@ -28,15 +28,18 @@ export default function SpecialtiesAndServices() {
             </StyledRow>
             <HeadingTextLight $color="primary">Pillars of Holistic Approach</HeadingTextLight>
             <StyledRow>
-                <Pillar text="Functional Nutrition" icon={NutritionIcon}/>
-                <Pillar text="Physical Activity" icon={PhysicalActivityIcon}/>
-                <Pillar text="Stress Management" icon={StressIcon}/>
-                <Pillar text="Sleep Hygeine" icon={SleepIcon}/>
-                <Pillar text="Hydration" icon={HydrationIcon}/>
-                <Pillar text="Relationship Management" icon={RelationshipIcon}/>
+                <Pillar text="Functional Nutrition" icon={NutritionIcon} alt="apple"/>
+                <Pillar text="Physical Activity" icon={PhysicalActivityIcon} alt="person running"/>
+                <Pillar text="Stress Management" icon={StressIcon} alt="face icon with a worried face"/>
+                <Pillar text="Sleep Hygeine" icon={SleepIcon} alt="bed"/>
+                <Pillar text="Hydration" icon={HydrationIcon} alt="water drop"/>
+                <Pillar text="Relationship Management" icon={RelationshipIcon} alt="2 people holding hands"/>
             </StyledRow>
             <ContentText>At Wellness n Vitality, we believe in the power of functional nutrition to transform lives. Our 1-1 coaching program focuses on these six foundational pillars, offering personalized plans and continuous support. Join us to unlock a healthier, more energized you.</ContentText>
-            <StyledActionButton $variant='default'>Start Your Journey Now</StyledActionButton>
+            <StyledActionButton $variant='default' onClick={(e) => {
+                        e.preventDefault();
+                        window.open("https://my.practicebetter.io/#/5c6a01b7627db308702273dc/bookings?step=services", "_blank", "noreferrer");
+                    }}>Start Your Journey Now</StyledActionButton>
         </Wrapper>
     );
 }

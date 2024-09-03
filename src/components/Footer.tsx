@@ -16,11 +16,14 @@ export default function Footer() {
             <FirstRow>
                 <Logo size={150}/>
                 <SocialsRow $fontSize={fontSize}>
-                    <StyledAnchor href="https://www.facebook.com/WellnessnVitality" target="_blank"><FacebookRounded style={{ width: fontSize, height: fontSize }} /></StyledAnchor>
-                    <StyledAnchor href="https://www.youtube.com/@wellnessnvitality" target="_blank"><RoundedIcon src={YouTubeRounded} alt="Instagram" $size={fontSize}/></StyledAnchor>
-                    <StyledAnchor href="https://www.instagram.com/wellnessnvitality?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><RoundedIcon src={InstagramRounded} alt="Instagram" $size={fontSize}/></StyledAnchor>
-                    <StyledAnchor href="mailto:wellnessvitality20@gmail.com" target="_blank"><RoundedIcon src={EmailRounded} alt="Instagram" $size={fontSize}/></StyledAnchor>
-                    <ActionButton $variant="default">Schedule a FREE Discovery Call</ActionButton>
+                    <StyledAnchor href="https://www.facebook.com/WellnessnVitality" target="_blank noreferrer" title="facebook"><FacebookRounded style={{ width: fontSize, height: fontSize}}/></StyledAnchor>
+                    <StyledAnchor href="https://www.youtube.com/@wellnessnvitality" target="_blank noreferrer"><RoundedIcon src={YouTubeRounded} alt="YouTube" $size={fontSize}/></StyledAnchor>
+                    <StyledAnchor href="https://www.instagram.com/wellnessnvitality?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank noreferrer"><RoundedIcon src={InstagramRounded} alt="Instagram" $size={fontSize}/></StyledAnchor>
+                    <StyledAnchor href="mailto:wellnessvitality20@gmail.com" target="_blank noreferrer"><RoundedIcon src={EmailRounded} alt="Email" $size={fontSize}/></StyledAnchor>
+                    <ActionButton $variant="default" onClick={(e) => {
+                        e.preventDefault();
+                        window.open("https://my.practicebetter.io/#/5c6a01b7627db308702273dc/bookings?step=services", "_blank", "noreferrer");
+                    }}>Schedule a FREE Discovery Call</ActionButton>
                 </SocialsRow>
             </FirstRow>
             <Divider/>
@@ -35,9 +38,6 @@ export default function Footer() {
 }
 
 const Wrapper = styled.div`
-    /* position: relative; */
-    /* top: -5vh; */
-    /* bottom: 0; */
     height: 40vh;
     background: ${offWhite};
     border-top-right-radius: ${BorderRadius.button}px;

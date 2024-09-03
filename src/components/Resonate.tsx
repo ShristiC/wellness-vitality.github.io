@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
-import { ContentText, HeadingText } from "./Core/Typography";
+import Leaf from "../assets/icons/Leaf-Bullet.svg";
 import { BorderRadius, PaddingOrMargin, Row } from "./Core/Layout";
-import { Park } from "@mui/icons-material";
-import { darkGreen } from "./Core/Colors";
+import { ContentText, HeadingText } from "./Core/Typography";
 import { ActionButton } from "./CoreButtons";
 
 export interface IResonateProps{
@@ -18,12 +17,15 @@ export default function Resonate({question, bulletPoints, buttonText}: IResonate
                 {bulletPoints.map((point, i) =>  {
                     return (
                         <PainPointRow key={`pain_point_${i}`}>
-                            <Park htmlColor={darkGreen}/>
+                            <img src={Leaf} height={24} alt="Leaf shaped bullet point"/>
                             <ContentText>{point}</ContentText>
                         </PainPointRow>
                     );
                 })}
-                {buttonText && <CenterActionButton $variant="default">{buttonText}</CenterActionButton>}
+                {buttonText && <CenterActionButton $variant="default" onClick={(e) => {
+                        e.preventDefault();
+                        window.open("https://my.practicebetter.io/#/5c6a01b7627db308702273dc/bookings?step=services", "_blank", "noreferrer");
+                    }}>{buttonText}</CenterActionButton>}
             </ContentWrapper>
         </Wrapper>
     );

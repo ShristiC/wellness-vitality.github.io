@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { theme } from "./Core/Colors";
+import { Row, TopLayer } from "./Core/Layout";
 import Logo from "./Logo";
 import NavigationBar from "./NavigationBar";
-import { PaddingOrMargin, Row, TopLayer } from "./Core/Layout";
 
 export default function Heading() {
     return (
@@ -19,7 +19,6 @@ const HeadingRow = styled(Row)`
     justify-content: space-between;
     height: 120px;
     background-color: ${theme.palette.background.paper};
-    /* padding: ${PaddingOrMargin.small}px ${PaddingOrMargin.small}px; */
     z-index: ${TopLayer};
     position: absolute;
     width: 100%;

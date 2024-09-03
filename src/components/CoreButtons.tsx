@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { theme } from "./Core/Colors";
-import { FontSizes, Weights } from "./Core/Typography";
+import { darkGreen, lightGreen, theme } from "./Core/Colors";
 import { BorderRadius } from "./Core/Layout";
+import { FontSizes, Weights } from "./Core/Typography";
 
 
 export const BaseButton = styled.button`
@@ -23,9 +23,16 @@ export const CoreButton = styled(BaseButton)`
     background-color: transparent;
 `;
 
-export const HyperlinkButton = styled(BaseButton)`
+type linkVariant = 'default' | 'testimonials';
+
+const linkColors: {[key in linkVariant]: string} = {
+    default: theme.palette.text.secondary,
+    testimonials: darkGreen
+}
+
+export const HyperlinkButton = styled(BaseButton)<{$variant: 'default' | 'testimonials'}>`
     font-size: ${FontSizes.button}px;
     text-decoration: underline;
     background: transparent;
-    color: ${theme.palette.text.secondary};
+    color: ${(props) => linkColors[props.$variant]};
 `;

@@ -3,13 +3,13 @@ import Petal from '../assets/cover/Petal.svg';
 export default function BackgroundPetals () {
     return (
         <>
-            <FlowerPetalOne src={Petal}/>
-            <FlowerPetalTwo src={Petal}/>
-            <FlowerPetalThree src={Petal}/>
-            <FlowerPetalFour src={Petal}/>
-            <SmallPetalOne src={Petal}/>
-            <SmallPetalTwo src={Petal}/>
-            <SmallPetalThree src={Petal}/>
+            <FlowerPetalOne role="presentation" src={Petal}/>
+            <FlowerPetalTwo role="presentation" src={Petal}/>
+            <FlowerPetalThree role="presentation" src={Petal}/>
+            <FlowerPetalFour role="presentation" src={Petal}/>
+            <SmallPetalOne role="presentation" src={Petal}/>
+            <SmallPetalTwo role="presentation" src={Petal}/>
+            <SmallPetalThree role="presentation" src={Petal}/>
         </>
     );
 }
