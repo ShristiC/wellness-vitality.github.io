@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { darkGreen, lightGreen, theme } from "./Core/Colors";
+import { darkGreen, theme } from "./Core/Colors";
 import { BorderRadius } from "./Core/Layout";
 import { FontSizes, Weights } from "./Core/Typography";
 
