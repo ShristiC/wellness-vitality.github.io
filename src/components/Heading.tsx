@@ -3,12 +3,22 @@ import { theme } from "./Core/Colors";
 import { Row, TopLayer } from "./Core/Layout";
 import Logo from "./Logo";
 import NavigationBar from "./NavigationBar";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 export default function Heading() {
-    return (
+    const [_, isMobile] = useWindowDimensions();
+
+    return isMobile ? (
+        <HeadingWrap>
+            <Logo size={50} margin="5px"/>
+            <NavigationWrap $isMobile={isMobile}>
+                <NavigationBar />
+            </NavigationWrap>
+        </HeadingWrap>
+    ) : (
         <HeadingRow>
             <Logo size={90} margin="10px"/>
-            <NavigationWrap>
+            <NavigationWrap $isMobile={isMobile}>
                 <NavigationBar />
             </NavigationWrap>
         </HeadingRow>
@@ -17,7 +27,7 @@ export default function Heading() {
 
 const HeadingRow = styled(Row)`
     justify-content: space-between;
-    height: 120px;
+    max-height: 120px;
     background-color: ${theme.palette.background.paper};
     z-index: ${TopLayer};
     position: absolute;
@@ -26,8 +36,14 @@ const HeadingRow = styled(Row)`
     left: 0;
 `;
 
-const NavigationWrap = styled.div`
-    width: 50%;
+const HeadingWrap = styled(HeadingRow)`
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5px;
+`;
+
+const NavigationWrap = styled.div<{$isMobile: boolean}>`
+    width: ${(props) => props.$isMobile ? '100%' : '50%'};
     position: relative;
-    top: 25%;
+    align-self: center;
 `;

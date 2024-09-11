@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Row } from "./Core/Layout";
 import { ActionButton, CoreButton } from "./CoreButtons";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 interface INavigationItem {
     name: string,
@@ -8,6 +9,7 @@ interface INavigationItem {
 }
 export default function NavigationBar() {
     const navigate = useNavigate();
+    const [_, isMobile] = useWindowDimensions();
 
     const navigationItems: INavigationItem[] = [
         { name: 'Home', route: '/' },
@@ -20,11 +22,11 @@ export default function NavigationBar() {
     return (
         <Row>
             {navigationItems.map((item, i) => {
-                return <CoreButton key={i} onClick={() => navigate(item.route)}>
+                return <CoreButton key={i} onClick={() => navigate(item.route)} $isMobile={isMobile}>
                     {item.name}
                 </CoreButton>
             })}
-            <ActionButton $variant="default" onClick={(e) => {
+            <ActionButton $variant="default" $isMobile={isMobile} onClick={(e) => {
                         e.preventDefault();
                         window.open("https://my.practicebetter.io/#/5c6a01b7627db308702273dc/bookings?step=services", "_blank", "noreferrer");
             }}>Learn More</ActionButton>
