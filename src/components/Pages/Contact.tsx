@@ -3,16 +3,18 @@ import { PaddingOrMargin } from "../Core/Layout";
 import { ContentText, Title } from "../Core/Typography";
 import Footer from "../Footer";
 import Heading from "../Heading";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export default function ContactPage() {
+    const [_, isMobile] = useWindowDimensions();
     const description = "Starting a change sounds scary, but it doesn’t have to be. Schedule a free discovery call to consult and answer any of your questions.";
     return (
         <>
             <Heading />
             <Content>
                 <InnerContent>
-                    <Title>Contact</Title>
-                    <ContentText>
+                    <Title $isMobile={isMobile}>Contact</Title>
+                    <ContentText $isMobile={isMobile}>
                         {description}
                     </ContentText>
                 </InnerContent>
