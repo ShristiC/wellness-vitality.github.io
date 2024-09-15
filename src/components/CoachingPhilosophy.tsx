@@ -15,13 +15,13 @@ export default function CoachingPhilosophy () {
         <Wrapper $isSmallerScreen={smallerScreen}>
             <BlurWrapper/>
             <ContentWrapper>
-                <HeadingTextLight $isMobile={isMedium} $color='secondary'>Coaching Philosophy</HeadingTextLight>
-                <StyledContentText $isMobile={isMedium}>As a Health and Wellness Nutrition Coach, my coaching is a client-focused partnership that fosters self-awareness, motivation, and positive accountability to achieve meaningful, lasting changes. As my client, you and I will collaborate together to tailor improvement plans to your needs and goals. I will empower you to self-monitor, reflect, and achieve attainable goals. Together, we will create sustainable behavioral changes that will lead you to a longer, healthier, and happier life.</StyledContentText>
+                <HeadingTextLight $isMobile={smallerScreen} $color='secondary'>Coaching Philosophy</HeadingTextLight>
+                <StyledContentText $isMobile={smallerScreen}>As a Health and Wellness Nutrition Coach, my coaching is a client-focused partnership that fosters self-awareness, motivation, and positive accountability to achieve meaningful, lasting changes. As my client, you and I will collaborate together to tailor improvement plans to your needs and goals. I will empower you to self-monitor, reflect, and achieve attainable goals. Together, we will create sustainable behavioral changes that will lead you to a longer, healthier, and happier life.</StyledContentText>
                 {coachingPoints.map((point, i) => {
                     return (
                         <PainPointRow key={`pain_point_${i}`}>
                             <img src={Leaf} height={24} alt="white leaf bullet point"/>
-                            <ContentText $isMobile={isMedium}>{point}</ContentText>
+                            <ContentText $isMobile={smallerScreen}>{point}</ContentText>
                         </PainPointRow>
                 );})}
                 
@@ -33,7 +33,7 @@ export default function CoachingPhilosophy () {
 const Wrapper = styled.div<{$isSmallerScreen: boolean}>`
     position: relative;
     background-image: url(${CoachingImage});
-    height: ${(props) => props.$isSmallerScreen ? 80 : 50}vh;
+    height: ${(props) => props.$isSmallerScreen ? 100 : 50}vh;
     background-size: cover;
     border-radius: ${BorderRadius.button}px;
     padding: 10%;
