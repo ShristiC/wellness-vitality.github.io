@@ -1,16 +1,29 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import ProfessionalImage from "../../assets/anita_professional.jpg";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
+import CoachingPhilosophy from "../CoachingPhilosophy";
 import { PaddingOrMargin, Row } from "../Core/Layout";
 import { ContentText, ContentTextBold, Title } from "../Core/Typography";
+import { ActionButton } from "../CoreButtons";
 import { ExpanderCard } from "../ExpanderCard";
 import Footer from "../Footer";
 import Heading from "../Heading";
-import CoachingPhilosophy from "../CoachingPhilosophy";
 import Qualifications from "../Qualifications";
-import { ActionButton } from "../CoreButtons";
 
 export default function AboutPage() {
+    const [_, isMobile, isMedium] = useWindowDimensions();
+    let variant: 'wide' | 'medium' | 'compact';
+    if (!isMobile && !isMedium) {
+        variant = 'wide';
+    } else if (!isMobile && isMedium) {
+        variant = 'medium';
+    } else if (isMobile && !isMedium) {
+        variant = 'compact';
+    } else {
+        variant = 'wide';
+    }
+
     const inspirationStory = [
         "When I was a young girl, I would feel fatigue within an 1 hour of physical activity. I lacked the energy to chase my siblings and go through the day without napping in between. I was also overweight which led me to have lower self-confidence. Growing up, I thought it was expected, normal even, to feel this way. However, when my father was diagnosed with Type II Diabetes and Kidney Failure, requiring dialysis 3x a week  — I realized these “conditions” were detrimental and not normal.",
         "Determined to find answers, I began working for a functional and integrative medical doctor. There, I learned of the profound impact holistic approach has on sustainable health and well-being. Inspired, I enrolled in my first Functional Medicine course and became a Certified Functional Medicine Health and Wellness Coach. Seeing success with my own transformation, I dedicated myself to help others discover the root causes of their health challenges, and guide them towards a path of vitality and wellness. ",
@@ -33,43 +46,49 @@ export default function AboutPage() {
         setShowExperience(!showExperience)
     }
 
+    const ProfessionalComponent = () => {
+        return (
+            <ProfessionalContent $isMobile={isMobile}>
+                <ProfessionalWrap $isMedium={isMedium} src={ProfessionalImage} alt="Professional image of a South Asian brown woman, with parted dark brown hair, dark brown eyes, and a smiling friendly face. She is wearing a dark green dress with her arms crossed and her body slightly tilted."/>
+                <ContentTextBold $isMobile={isMobile} style={{marginTop: "20px", textAlign: "center"}}>Anita Chitlangia</ContentTextBold>
+                <ContentText $isMobile={isMobile} style={{textAlign: "center"}}>Founder of Wellness n Vitality</ContentText>
+            </ProfessionalContent>
+    );
+ }
     return (
         <>
             <Heading />
             <Content>
                 <InnerContent>
-                    <Title>Empowering Wellness</Title>
-                    <Row style={{marginTop: '25px'}}>
+                    <Title $isMobile={isMobile}>Empowering Wellness</Title>
+                    <Layout $isMobile={isMobile}>
+                        {isMobile && ProfessionalComponent()}
                         <QuickWrap>
                             <ExpanderCard title="My Inspiration" open={showInspiration} handleOpen={handleInspirationOpen}>
-                                <ContentWrap>
+                                <ContentWrap $variant={variant}>
                                         {inspirationStory.map((story, i) => {
-                                            return <ContentText key={`inspiration_${i}`}>{story}</ContentText>
+                                            return <ContentText $isMobile={isMobile} key={`inspiration_${i}`}>{story}</ContentText>
                                         })}
                                 </ContentWrap>
                             </ExpanderCard>
                             <ExpanderCard title="My Experience" open={showExperience} handleOpen={handleExperienceOpen}>
-                                <ContentWrap>
+                                <ContentWrap $variant={variant}>
                                         {experiences.map((story, i) => {
-                                            return <ContentText key={`credibility_${i}`}>{story}</ContentText>
+                                            return <ContentText $isMobile={isMobile} key={`credibility_${i}`}>{story}</ContentText>
                                         })}
                                 </ContentWrap>
                             </ExpanderCard>
                         </QuickWrap>
-                        <ProfessionalContent>
-                            <ProfessionalWrap src={ProfessionalImage} alt="Professional image of a South Asian brown woman, with parted dark brown hair, dark brown eyes, and a smiling friendly face. She is wearing a dark green dress with her arms crossed and her body slightly tilted."/>
-                            <ContentTextBold style={{marginTop: "20px", textAlign: "center"}}>Anita Chitlangia</ContentTextBold>
-                            <ContentText style={{textAlign: "center"}}>Founder of Wellness n Vitality</ContentText>
-                        </ProfessionalContent>
-                    </Row>
+                        {!isMobile && ProfessionalComponent()}
+                    </Layout>
                 </InnerContent>
             </Content>
             <Qualifications />
             <CoachingPhilosophy/>
             <CallToAction>
-                <ContentText>Are you looking for an accountability partner, someone to be your champion, and make your goals bite sized? Have you tried before, but are too scared to again?</ContentText>
-                <ContentTextBold>You are not alone and it is not too late! Let's work together to take charge of your life and help you live your most vibrant life.</ContentTextBold>
-                <ActionButton $variant="default" onClick={(e) => {
+                <ContentText $isMobile={isMobile}>Are you looking for an accountability partner, someone to be your champion, and make your goals bite sized? Have you tried before, but are too scared to again?</ContentText>
+                <ContentTextBold $isMobile={isMobile}>You are not alone and it is not too late! Let's work together to take charge of your life and help you live your most vibrant life.</ContentTextBold>
+                <ActionButton $isMobile={isMobile} $variant="default" onClick={(e) => {
                         e.preventDefault();
                         window.open("https://my.practicebetter.io/#/5c6a01b7627db308702273dc/bookings?step=services", "_blank", "noreferrer");
                     }}>Let's start NOW!</ActionButton>
@@ -102,22 +121,29 @@ const QuickWrap = styled.div`
     transition: width 2s, height 4s, ease;
 `;
 
-const ContentWrap = styled(InnerContent)`
+const width: {[key in 'wide' | 'medium' | 'compact']: string} = {
+    'wide': '600px',
+    'medium': '400px',
+    'compact': '100%',
+};
+
+const ContentWrap = styled(InnerContent)<{$variant: 'wide' | 'medium' | 'compact'}>`
     justify-content: space-around;
     text-indent: 48px;
     padding: 20px 0px;
-    width: 600px;
+    width: ${(props) => width[props.$variant]};
 `;
 
-const ProfessionalWrap = styled.img`
-    height: 500px;
+const ProfessionalWrap = styled.img<{$isMedium: boolean}>`
+    height: ${(props) => props.$isMedium ? 300 : 500}px;
 `;
 
-const ProfessionalContent = styled.div`
+const ProfessionalContent = styled.div<{$isMobile: boolean}>`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-self: center;
+    height: ${(props) => props.$isMobile ? '80vh' : 'auto'};
 `;
 
 const CallToAction = styled.div`
@@ -127,4 +153,9 @@ const CallToAction = styled.div`
     flex-direction: column;
     gap: 40px;
     align-items: center;
+`;
+
+const Layout = styled(Row)<{$isMobile: boolean}>`
+    margin-top: ${(props) => props.$isMobile ? 0 : 25}px;
+    flex-direction: ${(props) => props.$isMobile ? 'column' : 'row'};
 `;

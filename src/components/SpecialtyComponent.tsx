@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { theme } from "./Core/Colors";
 import { ContentText } from "./Core/Typography";
 import { BorderRadius } from "./Core/Layout";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 interface ISpecialtyContentProps {
     text: string;
@@ -10,33 +11,34 @@ interface ISpecialtyContentProps {
 }
 
 export default function SpecialtyComponent({text, imageUrl, imageAlt}: ISpecialtyContentProps) {
+    const [_, isMobile] = useWindowDimensions();
     return (
-        <Wrapper>
-            <ImageWrapper src={imageUrl} alt={imageAlt}>
-            </ImageWrapper>
-            <StyledContentText>{text}</StyledContentText>
+        <Wrapper $isMobile={isMobile}>
+            <ImageWrapper src={imageUrl} alt={imageAlt} $isMobile={isMobile}/>
+            <StyledContentText $isMobile={isMobile}>{text}</StyledContentText>
         </Wrapper>
     );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{$isMobile: boolean}>`
     background-color: ${theme.palette.background.default};
-    width: 230px;
-    height: 290px;
+    width: ${(props) => props.$isMobile ? 150 : 230}px;
+    height: ${(props) => props.$isMobile ? 180 : 290}px;
     border-radius: ${BorderRadius.button}px;
-    padding: 15px;
+    padding: ${(props) => props.$isMobile ? 5 : 15}px;
     align-items: center;
+    margin: ${(props) => props.$isMobile ? '30px 0px' : '30px 5px'};
 `;
 
 const StyledContentText = styled(ContentText)`
-    margin-top: -25px;
+    margin-top: ${(props) => props.$isMobile ? -40 : -25}px;
 `;
 
-const ImageWrapper = styled.img`
+const ImageWrapper = styled.img<{$isMobile: boolean}>`
     background-color: #cccccc;
-    width: 200px;
-    height: 200px;
-    margin: 0px 15px;
+    width: ${(props) => props.$isMobile ? 130 : 200}px;
+    height: ${(props) => props.$isMobile ? 130 :200}px;
+    margin: 0px ${(props) => props.$isMobile ? 5 : 15}px;
     position: relative;
     top: -50px;
     border: 4px solid ${theme.palette.background.default};

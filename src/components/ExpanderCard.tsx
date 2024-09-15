@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { PropsWithChildren } from "react";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import { darkGreen } from "./Core/Colors";
 import { Row } from "./Core/Layout";
 import { FontSizes, HeadingText } from "./Core/Typography";
@@ -13,6 +14,7 @@ interface IExpanderCardProps {
 }
 
 export const ExpanderCard: React.FC<PropsWithChildren<IExpanderCardProps>> = ({open, title, handleOpen, children})  => {
+    const [_, isMobile] = useWindowDimensions();
     return (
         <Card>
             <CardTitle role="button" onClick={handleOpen}>
@@ -23,7 +25,7 @@ export const ExpanderCard: React.FC<PropsWithChildren<IExpanderCardProps>> = ({o
                         : <Icon>
                             <ChevronRight htmlColor={darkGreen} fontSize="large" />
                         </Icon>}
-                <HeadingText $color="primary">{title}</HeadingText>
+                <HeadingText $isMobile={isMobile} $color="primary">{title}</HeadingText>
             </CardTitle>
             <BorderBottom>
                 {open && children}

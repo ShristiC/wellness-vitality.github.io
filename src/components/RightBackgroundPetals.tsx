@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import LeftBackgroundFlower from '../assets/cover/Petals.png';
-export default function LeftBackgroundPetals () {
+export default function RightBackgroundPetals () {
     return (
         <Flower src={LeftBackgroundFlower} role="presentation"/>
     );
@@ -8,8 +8,8 @@ export default function LeftBackgroundPetals () {
 
 const Flower = styled.img`
     position: absolute;
-    right:25%;
-    top: 70%;
+    right:-20%;
+    top: 5%;
     scale: 0.8;
-    transform: rotateZ(-120deg);
+    transform: rotateZ(45deg);
 `;

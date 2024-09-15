@@ -21,9 +21,9 @@ export function LogoIcon() {
     );
 }
 
-export function WhiteLogoIcon() {
+export function WhiteLogoIcon({size = 100, margin = '0'}: ILogoProps) {
     return (
-        <img src={LogoWhiteIcon} alt={description} width={100} />
+        <img src={LogoWhiteIcon} alt={description} height={size} style={{margin: `${margin}`}} />
     );
 }
 
