@@ -22,6 +22,7 @@ import VegPulao from "../../assets/gallery/Vege Pulao.jpg";
 import VegLasagna from "../../assets/gallery/Vegge lasagna.jpg";
 import VegTapioca from "../../assets/gallery/Vegges with Tapioca.jpg";
 import WatermelonJuice from "../../assets/gallery/Watermelon Chia Juice.jpg";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { PaddingOrMargin, Row } from "../Core/Layout";
 import { ContentText, DisclaimerText, Title } from "../Core/Typography";
 import Footer from "../Footer";
@@ -29,6 +30,7 @@ import Heading from "../Heading";
 import TestimonialsFeatureComponent from "../TestimonialsFeatureComponent";
 
 export default function RecipesPage() {
+    const [_, isMobile] = useWindowDimensions();
     const items = [
         {
             image: VegLasagna,
@@ -175,12 +177,12 @@ export default function RecipesPage() {
             <Heading />
             <Content>
                 <InnerContent>
-                    <Title>Gallery</Title>
-                    <ContentText>Healthy eating doesn't have to be bland -- check out these tasty dishes, reccommendations, and success stories!</ContentText>
+                    <Title $isMobile={isMobile}>Gallery</Title>
+                    <ContentText $isMobile={isMobile}>Healthy eating doesn't have to be bland -- check out these tasty dishes, reccommendations, and success stories!</ContentText>
                     <Gallery>
                         <CoverImg src={items[currIndex].image} alt={items[currIndex].alt}/>
-                        <ContentText style={{textAlign: "center"}}>{items[currIndex].title}</ContentText>
-                        <DisclaimerText style={{textAlign: "center"}}>{items[currIndex].ingredients}</DisclaimerText>
+                        <ContentText $isMobile={isMobile} style={{textAlign: "center"}}>{items[currIndex].title}</ContentText>
+                        <DisclaimerText $isMobile={isMobile} style={{textAlign: "center"}}>{items[currIndex].ingredients}</DisclaimerText>
                         <GalleryRow>
                             {items.map((food, i) => {
                                 return (

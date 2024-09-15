@@ -9,6 +9,7 @@ import { darkGreen, lightGreen, white } from "./Core/Colors";
 import { BorderRadius, Row } from "./Core/Layout";
 import { ContentText, ContentTextBold, DisclaimerText, HeadingTextLight } from "./Core/Typography";
 import { HyperlinkButton } from "./CoreButtons";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 interface TestimonialItem {
     title: string;
@@ -19,6 +20,7 @@ interface TestimonialItem {
 }
 
 export default function WrittenTestimonials () {
+    const [_, isMobile] = useWindowDimensions();
     const [count, setCount] = useState(2);
 
     const testimonialsCol1: TestimonialItem[] = [
@@ -93,8 +95,8 @@ export default function WrittenTestimonials () {
 
     return (
         <Wrapper>
-            <HeadingTextLight $color="secondary">Hear From Clients</HeadingTextLight>
-            <TestimonialRow>
+            <HeadingTextLight $isMobile={isMobile} $color="secondary">Hear From Clients</HeadingTextLight>
+            <TestimonialRow $isMobile={isMobile}>
                 <TestimonialCol>
                     {testimonialsCol1.slice(0,count).map((testimonial, i) => {
                         return (
@@ -110,6 +112,7 @@ export default function WrittenTestimonials () {
                     })}
                 </TestimonialCol>
             </TestimonialRow>
+            
             {count == 2 && <HyperlinkButton $variant="default" onClick={() => setCount(Math.max(testimonialsCol1.length, testimonialsCol2.length))}> See More </HyperlinkButton>}
         </Wrapper>
     );
@@ -122,20 +125,25 @@ interface InnerWrittenContentProps {
 
 function WrittenTestimonial({testimonial, id}: InnerWrittenContentProps) {
     const [isSelected, setIsSelected] = useState(false);
+    const [_, isMobile] = useWindowDimensions();
 
     return (
         <Card key={id}>
             <img src={QuoteIcon} alt=""/>
-            <CardWrapper>
+            <CardWrapper $isMobile={isMobile}>
+                {isMobile && <InnerContent>
+                    {testimonial.imageUrl !== "" && <TestimonialImage src={testimonial.imageUrl} width={150} height={150} alt={testimonial.alt}/>}
+                    <DisclaimerText $isMobile={isMobile} style={{textAlign: "center", alignSelf: "center"}}>{testimonial.name}</DisclaimerText>
+                </InnerContent>}
                 <InnerContent style={{width: "65%"}}>
-                    <ContentTextBold>{testimonial.title}</ContentTextBold>
-                    <Text>{isSelected ? testimonial.description : `${testimonial.description.substring(0, 115)}...`}</Text>
+                    <ContentTextBold $isMobile={isMobile}>{testimonial.title}</ContentTextBold>
+                    <Text $isMobile={isMobile}>{isSelected ? testimonial.description : `${testimonial.description.substring(0, 115)}...`}</Text>
                     {!isSelected && <HyperlinkButton $variant="testimonials" onClick={() => setIsSelected(true)}>See More</HyperlinkButton>}
                 </InnerContent>
-                <InnerContent>
+                {!isMobile && <InnerContent>
                     {testimonial.imageUrl !== "" && <TestimonialImage src={testimonial.imageUrl} width={150} height={150} alt={testimonial.alt}/>}
-                    <DisclaimerText style={{textAlign: "center", alignSelf: "center"}}>{testimonial.name}</DisclaimerText>
-                </InnerContent>
+                    <DisclaimerText $isMobile={isMobile} style={{textAlign: "center", alignSelf: "center"}}>{testimonial.name}</DisclaimerText>
+                </InnerContent>}
             </CardWrapper>
         </Card>
     );
@@ -161,13 +169,15 @@ const Card = styled.div`
     margin: 5px;
 `;
 
-const CardWrapper = styled(Row)`
+const CardWrapper = styled(Row)<{$isMobile: boolean}>`
     overflow: hidden;
     padding: 15px;
+    flex-direction: ${(props) => props.$isMobile ? 'column' : 'row'};
 `;
 
 
-const TestimonialRow = styled(Row)`
+const TestimonialRow = styled(Row)<{$isMobile: boolean}>`
+    flex-direction: ${(props) => props.$isMobile ? 'column' : 'row'};
 `;
 
 const TestimonialCol = styled(Row)`

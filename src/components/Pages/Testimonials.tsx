@@ -1,15 +1,17 @@
 import styled from "@emotion/styled";
 import { gray } from "../Core/Colors";
 import { BorderRadius, PaddingOrMargin, Row } from "../Core/Layout";
-import { ContentText, DisclaimerText, HeadingText } from "../Core/Typography";
+import { ContentText, ContentTextBold, DisclaimerText, HeadingText } from "../Core/Typography";
 import Footer from "../Footer";
 import Heading from "../Heading";
 import TestimonialsCoverComponent from "../TestimonialsCoverComponents";
 import { useState } from "react";
 import WrittenTestimonials from "../WrittenTestimonials";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export default function TestimonialsPage() {
     const [currIndex, setCurrIndex] = useState(0);
+    const [_, isMobile] = useWindowDimensions();
 
     const testimonialVideos = [
         {
@@ -61,14 +63,15 @@ export default function TestimonialsPage() {
         <>
             <Heading />
             <TestimonialsCoverComponent />
-            <VideoTestimonials>
-                <CoverVideoWrapper>
-                    <Video src={testimonialVideos[currIndex].videoUrl} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title={testimonialVideos[currIndex].title}/>
-                    <CoverVideoContent>
-                        <HeadingText $color="primary">{testimonialVideos[currIndex].title}</HeadingText>
-                        <ContentText>{testimonialVideos[currIndex].description}</ContentText>
+            <VideoTestimonials $isMobile={isMobile}>
+                <CoverVideoWrapper $isMobile={isMobile}>
+                    <Video $isMobile={isMobile} src={testimonialVideos[currIndex].videoUrl} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title={testimonialVideos[currIndex].title}/>
+                    <CoverVideoContent $isMobile={isMobile}>
+                        <HeadingText $isMobile={isMobile} $color="primary">{testimonialVideos[currIndex].title}</HeadingText>
+                        <ContentText $isMobile={isMobile}>{testimonialVideos[currIndex].description}</ContentText>
                     </CoverVideoContent>
                 </CoverVideoWrapper>
+                <ContentTextBold $isMobile={isMobile}>See More</ContentTextBold>
                 <TestimonialsRow>
                     {testimonialVideos.map((testimonial, i) => {
                         return (
@@ -98,32 +101,33 @@ interface TestimonialCardProps {
 }
 
 function TestimonialCard ({title, date, videoURL, onClick}: TestimonialCardProps) {
+    const [_, isMobile] = useWindowDimensions();
     return (
         <Card role="button" onClick={onClick}>
-            <ThumbnailVideo src={videoURL} title={title} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture;" />
+            <ThumbnailVideo $isMobile={isMobile} src={videoURL} title={title} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture;" />
             <CardContent>
-                <ContentText>{title}</ContentText>
-                <Text>{date}</Text>
+                <ContentText $isMobile={isMobile}>{title}</ContentText>
+                <Text $isMobile={isMobile}>{date}</Text>
             </CardContent>
         </Card>
     );
 }
 
-const VideoTestimonials = styled.div`
+const VideoTestimonials = styled.div<{$isMobile: boolean}>`
     display: block;
     position: relative;
-    margin-top: 850px; // size of cover image
+    margin-top: ${(props) => props.$isMobile ? 100 : 120}vh; // size of cover image
     padding: ${PaddingOrMargin.extraLarge * 3}px 10%;
 `;
 
-const Video = styled.iframe`
-    width: 60%;
+const Video = styled.iframe<{$isMobile: boolean}>`
+    width: ${(props) => props.$isMobile ? 100 : 60}%;
     border-radius: ${BorderRadius.button}px;
-    height: 400px;
+    height: ${(props) => props.$isMobile ? 'auto' : '400px'};
 `;
 
-const CoverVideoContent = styled.div`
-    width: 40%;
+const CoverVideoContent = styled.div<{$isMobile: boolean}>`
+    width: ${(props) => props.$isMobile ? 100: 40}%;
     align-items: center;
     gap: 20px;
     display: flex;
@@ -131,9 +135,10 @@ const CoverVideoContent = styled.div`
     align-self: center;
 `;
 
-const CoverVideoWrapper = styled(Row)`
-    margin: ${PaddingOrMargin.extraLarge}px 0px;
-    gap: 40px;
+const CoverVideoWrapper = styled(Row)<{$isMobile: boolean}>`
+    flex-direction: ${(props) => props.$isMobile ? 'column': 'row'};
+    margin: ${(props) => props.$isMobile ? PaddingOrMargin.medium : PaddingOrMargin.extraLarge}px 0px;
+    gap: ${(props) => props.$isMobile ? 20 : 40}px;
 `;
 
 const Card = styled(Row)`
@@ -146,9 +151,9 @@ const Card = styled(Row)`
     height: 150px;
 `;
 
-const ThumbnailVideo = styled.iframe`
+const ThumbnailVideo = styled.iframe<{$isMobile: boolean}>`
     border-radius: ${BorderRadius.button}px;
-    width: 200px;
+    width: ${(props) => props.$isMobile ? 150 : 200}px;
 `;
 
 const CardContent = styled.div`

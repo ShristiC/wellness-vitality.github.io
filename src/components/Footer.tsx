@@ -11,7 +11,7 @@ import { ActionButton } from "./CoreButtons";
 import Logo from "./Logo";
 
 export default function Footer() {
-    const [windowDimensions, isMobile] = useWindowDimensions();
+    const [windowDimensions, isMobile, isMedium] = useWindowDimensions();
     const fontSize = isMobile ? 32 : 50;
     const logoSize = isMobile ? 80 : 150;
     const largeWidth = windowDimensions.width > 950;
@@ -40,7 +40,7 @@ export default function Footer() {
     );
 
     return (
-        <Wrapper $isMobile={isMobile} $isMedium={windowDimensions.width > 450 && windowDimensions.width < 950}>
+        <Wrapper $isMobile={isMobile} $isMedium={isMedium}>
             <FirstRow $isMobile={isMobile}>
                 <Logo size={logoSize} />
                 {!isMobile && <SocialIcons />}

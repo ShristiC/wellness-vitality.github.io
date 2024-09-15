@@ -1,59 +1,71 @@
 import styled from '@emotion/styled';
 import TestimonialsCover from '../assets/cover/Testimonials.jpeg';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 import { theme } from './Core/Colors';
-import { BorderRadius, PaddingOrMargin } from './Core/Layout';
+import { PaddingOrMargin } from './Core/Layout';
 import { ContentTextBold, Title } from './Core/Typography';
 import { WhiteLogoIcon } from './Logo';
 
 export default function TestimonialsCoverComponent() {
+    const [_, isMobile] = useWindowDimensions();
     return (
-        <FixedTopWrapper>
+        <FixedTopWrapper $isMobile={isMobile}>
             <CoverImage src={TestimonialsCover} alt="Family of 3 holding hands and jumping together" />
             <BlurContent/>
             <CenterContent>
-                <CoverTitle>Success Stories</CoverTitle>
-                <CoverSubtitle>Better Sleep | Healthy Gut | More Energy | Confidence</CoverSubtitle>
+                <CoverTitle $isMobile={isMobile}>Success Stories</CoverTitle>
+                <CoverSubtitle $isMobile={isMobile}>Better Sleep | Healthy Gut | More Energy | Confidence</CoverSubtitle>
             </CenterContent>
-            <IconWrap>
+            <IconWrapper $isMobile={isMobile}>
                 <WhiteLogoIcon />
-            </IconWrap>
+            </IconWrapper>
         </FixedTopWrapper>
     );
 }
 
-const FixedTopWrapper = styled.div`
+const FixedTopWrapper = styled.div<{$isMobile: boolean}>`
     width: 100%;
-    top: 0;
+    height: ${(props) => props.$isMobile ? '100vh' : '120vh'};
+    top: 100px;
     left: 0;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const CoverImage = styled.img`
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     transform: rotateY(180deg);
     filter: brightness(70%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
     clip-path: ellipse(95% 97% at 50% 0%);
-    display: block;
 `;
+
 
 const CenterContent = styled.div`
-    position: absolute;
-    top: 350px;
-    left: 20%;
-    width: 60%;
-    border-radius: ${BorderRadius.pill};
-    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: ${PaddingOrMargin.extraLarge}px;
     align-items: center;
-    height: 50%;
+    justify-content: center;
+    padding: ${PaddingOrMargin.medium}px;
 `;
 
-const BlurContent = styled(CenterContent)`
+const BlurContent = styled.div`
     background-color: black;
-    padding: ${PaddingOrMargin.medium};
     filter: opacity(30%) blur(40px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 `;
 
 const CoverTitle = styled(Title)`
@@ -66,11 +78,12 @@ const CoverSubtitle = styled(ContentTextBold)`
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: ${theme.palette.text.primary};
     text-shadow: 0 1px 0px ${theme.palette.text.primary};
-    letter-spacing: 0cap.5;
+    text-align: center;
 `;
 
-const IconWrap = styled.div`
-    left: 45%;
+const IconWrapper = styled.div<{$isMobile: boolean}>`
     position: absolute;
-    top: 775px;
+    bottom: ${(props) => props.$isMobile ? '5%' : '8%'};
+    left: 50%;
+    transform: translateX(-50%);
 `;
