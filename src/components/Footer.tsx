@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { FacebookRounded } from "@mui/icons-material";
 import EmailRounded from "../assets/Socials/Email.tif.svg";
 import InstagramRounded from "../assets/Socials/Instagram.tif.svg";
 import YouTubeRounded from "../assets/Socials/YouTube.tif.svg";
+import FacebookRounded from "../assets/Socials/facebook.tif.svg";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import { darkGreen, offWhite } from "./Core/Colors";
 import { BorderRadius, PaddingOrMargin, Row } from "./Core/Layout";
@@ -24,7 +24,7 @@ export default function Footer() {
     const SocialIcons = () => (
         <SocialsRow $fontSize={fontSize}>
             <StyledAnchor href="https://www.facebook.com/WellnessnVitality" title="Facebook">
-                <FacebookRounded style={{ width: fontSize, height: fontSize }} />
+                <RoundedIcon src={FacebookRounded} alt="Facebook" $size={fontSize} />
             </StyledAnchor>
             <StyledAnchor href="https://www.youtube.com/@wellnessnvitality">
                 <RoundedIcon src={YouTubeRounded} alt="YouTube" $size={fontSize} />
@@ -58,6 +58,10 @@ export default function Footer() {
             </DisclaimerText>
             <DisclaimerText $isMobile={isMobile}>
                Copyright © 2024 Wellness n Vitality. All Rights Reserved. Established 2020.
+            </DisclaimerText>
+            <DisclaimerText $isMobile={isMobile}>
+                Designed by 
+                <a href="https://www.ellenokamuradesign.com/" target="_blank noreferrer"> Ellen Okamura</a>
             </DisclaimerText>
         </Wrapper>
     );

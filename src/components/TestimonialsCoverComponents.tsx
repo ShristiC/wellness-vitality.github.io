@@ -36,7 +36,7 @@ const FixedTopWrapper = styled.div<{$isMobile: boolean}>`
 
 const CoverImage = styled.img`
     width: 100%;
-    height: 100%;
+    height: 90%;
     object-fit: cover;
     transform: rotateY(180deg);
     filter: brightness(70%);
@@ -64,7 +64,7 @@ const BlurContent = styled.div`
     filter: opacity(30%) blur(40px);
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 60%;
     z-index: -1;
 `;
 
@@ -75,15 +75,12 @@ const CoverTitle = styled(Title)`
 
 const CoverSubtitle = styled(ContentTextBold)`
     color: ${theme.palette.getContrastText('default')};
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: ${theme.palette.text.primary};
-    text-shadow: 0 1px 0px ${theme.palette.text.primary};
     text-align: center;
 `;
 
 const IconWrapper = styled.div<{$isMobile: boolean}>`
     position: absolute;
-    bottom: ${(props) => props.$isMobile ? '5%' : '8%'};
+    bottom: ${(props) => props.$isMobile ? '5%' : '15%'};
     left: 50%;
     transform: translateX(-50%);
 `;

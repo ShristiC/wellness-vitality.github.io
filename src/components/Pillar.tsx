@@ -55,12 +55,11 @@ const InnerContent = styled.div<{$isMobile: boolean}>`
     width: ${(props) => props.$isMobile ? 110 : 140}px;
     height: 160px;
     border: 3px solid ${theme.palette.divider};
-    /* margin: 0px 15px; */
     font-size: ${FontSizes.coverTitle}px;
     color: ${theme.palette.text.primary};
+    padding: 10px 2px;
 `;
 
 const SmallContentText = styled (ContentText)`
     font-size: ${(props) => props.$isMobile ? FontSizes.mobile.button : FontSizes.button}px;
-    margin-top: -20px;
 `;

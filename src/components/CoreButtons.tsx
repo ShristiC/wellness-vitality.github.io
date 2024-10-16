@@ -14,7 +14,7 @@ export const ActionButton = styled(BaseButton) <{ $variant: 'default' | 'paper',
     font-size: ${(props) => props.$isMobile ? `${FontSizes.mobile.buttonSmall}px` : `${FontSizes.buttonSmall}px`};
     padding: ${(props) => props.$isMobile ? '8px 10px' : '15px 30px'};
     color: ${(props) => theme.palette.getContrastText(props.$variant)};
-    font-weight: ${(props) => props.$variant == 'default' ? Weights.medium : Weights.light};
+    font-weight: ${(props) => props.$variant == 'default' ? Weights.regular : Weights.light};
     width: fit-content;
 `;
 
