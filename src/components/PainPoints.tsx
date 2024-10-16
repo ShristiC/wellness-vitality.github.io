@@ -61,7 +61,7 @@ const PainPointRow = styled(Row)`
 const PainPointsWrapper = styled.div<{$isMobile: boolean}>`
     display: block;
     position: relative;
-    margin-top: ${(props) => props.$isMobile ? 100 : 120}vh; // size of cover image
+    margin-top: ${(props) => props.$isMobile ? 100 : 100}vh; // size of cover image
     padding: ${PaddingOrMargin.extraLarge * 3}px ${(props) => props.$isMobile ? '5%' : '10%'};
     max-width: 100%;
     overflow-x: clip;

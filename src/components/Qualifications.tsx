@@ -54,8 +54,8 @@ export default function Qualifications() {
 const Wrapper = styled.div`
     border-radius: ${BorderRadius.button}px;
     border: 1px solid ${black};
-    margin: 10%;
-    padding: ${PaddingOrMargin.extraLarge}px 10%;
+    margin: 8%;
+    padding: ${PaddingOrMargin.extraLarge}px 2%;
     text-align: center;
     align-items: center;
 `;

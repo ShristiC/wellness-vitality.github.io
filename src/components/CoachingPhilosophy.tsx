@@ -33,16 +33,17 @@ export default function CoachingPhilosophy () {
 const Wrapper = styled.div<{$isSmallerScreen: boolean}>`
     position: relative;
     background-image: url(${CoachingImage});
+    background-position: 60% ;
     height: ${(props) => props.$isSmallerScreen ? 100 : 50}vh;
     background-size: cover;
     border-radius: ${BorderRadius.button}px;
-    padding: 10%;
+    padding: 5%;
 `;
 
 const ContentWrapper = styled.div`
     position: absolute;
     color: ${theme.palette.text.secondary};
-    top: 15%;
+    top: 10%;
     padding-right: 10%;
     padding-bottom: 10%;
 `;
@@ -51,7 +52,7 @@ const BlurWrapper = styled.div`
     background-color: black;
     filter: opacity(0.5) blur(40px);
     border-radius: ${BorderRadius.button}px;
-    height: 500px;
+    height: 400px;
 `;
 
 const StyledContentText = styled(ContentText)`

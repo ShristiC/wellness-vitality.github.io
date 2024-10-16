@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import ChronicPain from '../assets/specialties/chronic pain 2.jpg';
 import GutHealth from '../assets/specialties/gut health.jpg';
-import HydrationIcon from "../assets/specialties/Hydration.png";
+import HydrationIcon from "../assets/specialties/Hydration.svg";
 import NutritionIcon from "../assets/specialties/Nutrition.svg";
-import PhysicalActivityIcon from "../assets/specialties/PhysicalActivity.svg";
+import PhysicalActivityIcon from "../assets/specialties/PhysicalHealth.svg";
 import RelationshipIcon from "../assets/specialties/Relationship.svg";
 import SleepIcon from "../assets/specialties/Sleep.svg";
 import StressIcon from "../assets/specialties/Stress.svg";
