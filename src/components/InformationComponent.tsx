@@ -8,7 +8,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 export default function InformationComponent () {
     const [_, isMobile] = useWindowDimensions();
     return (
-        <Wrapper>
+        <Wrapper $isMobile={isMobile}>
             <ContentWrapper>
                 <HeadingTextLight $isMobile = {isMobile} $color='secondary'>What is the Functional</HeadingTextLight>
                 <HeadingTextLight $isMobile={isMobile} $color='secondary'>Medicine Approach?</HeadingTextLight>
@@ -18,10 +18,10 @@ export default function InformationComponent () {
     );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{$isMobile: boolean}>`
     position: relative;
     background-image: url(${FruitsImage});
-    height: 550px;
+    height: ${(props) => props.$isMobile ? '30vh' : '60vh'};
     background-size: cover;
     border-radius: ${BorderRadius.button}px;
     margin-top: 300px;
@@ -32,10 +32,10 @@ const Wrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-    padding: 10% 10%;
+    padding: 5% 5%;
     color: ${theme.palette.text.secondary};
 `;
 
 const StyledContentText = styled(ContentText)`
-    margin-top: ${PaddingOrMargin.extraLarge}px;
+    margin-top: ${PaddingOrMargin.large}px;
 `;

@@ -11,7 +11,7 @@ export default function TestimonialsFeatureComponent () {
     const [_, isMobile] = useWindowDimensions();
 
     return (
-        <Wrapper>
+        <Wrapper $isMobile={isMobile}>
             <HeadingTextLight $color="secondary" $isMobile={isMobile}>Success Stories</HeadingTextLight>
             <Video
                 $isMobile={isMobile} 
@@ -29,8 +29,8 @@ export default function TestimonialsFeatureComponent () {
     );
 }
 
-const Wrapper = styled.div`
-    min-height: 100vh;
+const Wrapper = styled.div<{$isMobile: boolean}>`
+    min-height: ${(props) => props.$isMobile ? '60vh' : '60vh'};
     background: linear-gradient(0deg, ${lightGreen}, ${darkGreen});
     border-radius: ${BorderRadius.button}px;
     text-align: center;

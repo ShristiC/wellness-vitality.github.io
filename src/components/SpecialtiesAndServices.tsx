@@ -21,7 +21,7 @@ export default function SpecialtiesAndServices() {
     const [_, isMobile] = useWindowDimensions();
     return (
         <Wrapper>
-            <Section>
+            <Section $isMobile={isMobile}>
                 <HeadingTextLight $isMobile={isMobile} $color="primary">My Specialties</HeadingTextLight>
                 <StyledRow $isMobile={isMobile}>
                     <SpecialtyComponent text='Type II Diabetes' imageUrl={Type2Diabetes} imageAlt="insulin measure of 113 with a tape measure around it"/>
@@ -30,7 +30,7 @@ export default function SpecialtiesAndServices() {
                     <SpecialtyComponent text='Irritable Bowel Syndrome (IBS)' imageUrl={GutHealth} imageAlt="Person holding their stomach towards the left, with a diagram of digestive system above it"/>
                 </StyledRow>
             </Section>
-            <Section style={{minHeight: '60vh'}}>
+            <Section $isMobile={isMobile}>
                 <HeadingTextLight $isMobile={isMobile} $color="primary">Pillars of Holistic Approach</HeadingTextLight>
                 <StyledRow $isMobile={isMobile}>
                     <Pillar text="Functional Nutrition" icon={NutritionIcon} alt="apple"/>
@@ -57,7 +57,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledRow = styled(Row)<{$isMobile: boolean}>`
-    padding: ${PaddingOrMargin.extraLarge * 2}px 0px;
+    padding: ${(props) => props.$isMobile ? PaddingOrMargin.extraLarge : PaddingOrMargin.extraLarge * 2}px 0px;
     color: ${theme.palette.text.secondary};
     flex-wrap: wrap;
 `;
@@ -66,6 +66,6 @@ const StyledActionButton = styled(ActionButton)`
     margin-top: ${PaddingOrMargin.extraLarge}px;
 `;
 
-const Section = styled.div`
-    min-height: 100vh;
+const Section = styled.div<{$isMobile: boolean}>`
+    min-height: ${(props) => props.$isMobile ? 30 : 60}vh;
 `;

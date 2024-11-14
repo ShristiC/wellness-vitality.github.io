@@ -112,7 +112,6 @@ export default function WrittenTestimonials () {
                     })}
                 </TestimonialCol>
             </TestimonialRow>
-            
             {count == 2 && <HyperlinkButton $variant="default" onClick={() => setCount(Math.max(testimonialsCol1.length, testimonialsCol2.length))}> See More </HyperlinkButton>}
         </Wrapper>
     );
@@ -129,7 +128,7 @@ function WrittenTestimonial({testimonial, id}: InnerWrittenContentProps) {
 
     return (
         <Card key={id}>
-            <img src={QuoteIcon} alt=""/>
+            <img src={QuoteIcon} width={isMobile ? 20 : 100} alt=""/>
             <CardWrapper $isMobile={isMobile}>
                 {isMobile && <InnerContent>
                     {testimonial.imageUrl !== "" && <TestimonialImage src={testimonial.imageUrl} width={150} height={150} alt={testimonial.alt}/>}
@@ -171,8 +170,9 @@ const Card = styled.div`
 
 const CardWrapper = styled(Row)<{$isMobile: boolean}>`
     overflow: hidden;
-    padding: 15px;
+    padding: ${(props) => props.$isMobile ? 0: 15}px;
     flex-direction: ${(props) => props.$isMobile ? 'column' : 'row'};
+    align-items: center;
 `;
 
 
@@ -195,10 +195,9 @@ const InnerContent = styled.div`
     gap: 20px;
     display: flex;
     flex-direction: column;
-    text-align: left;
     align-items: start;
 `;
 
 const Text = styled(ContentText)`
-    font-size: 20px;
+    font-size: ${(props) => props.$isMobile ? 10 : 20}px;
 `;

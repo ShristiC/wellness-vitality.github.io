@@ -17,7 +17,7 @@ export default function Pillar ({text, icon, alt}: IPillarProps) {
             <OuterPillarRow $isMobile={isMobile}/>
                 <InnerPillarRow $isMobile={isMobile}/>
                     <InnerContent $isMobile={isMobile}>
-                        <img src={icon} sizes="24" alt={alt} />
+                        <img src={icon} height={isMobile ? "30" : "50"} alt={alt} />
                         <SmallContentText $isMobile={isMobile}>{text}</SmallContentText>
                     </InnerContent>
                 <InnerPillarRow $isMobile={isMobile}/>
@@ -27,8 +27,8 @@ export default function Pillar ({text, icon, alt}: IPillarProps) {
 }
 
 const Wrapper = styled.div<{$isMobile: boolean}>`
-    max-height: ${(props) => props.$isMobile ? 200 : 250}px;
-    max-width: ${(props) => props.$isMobile ? 150 : 200}px;
+    max-height: ${(props) => props.$isMobile ? 150 : 250}px;
+    max-width: ${(props) => props.$isMobile ? 75 : 200}px;
 
     /* Flexbox for centering */
     display: flex;
@@ -39,25 +39,25 @@ const Wrapper = styled.div<{$isMobile: boolean}>`
 `;
 
 const OuterPillarRow = styled.div<{$isMobile: boolean}>`
-    width: ${(props) => props.$isMobile ? 150 : 170}px;
-    height: ${(props) => props.$isMobile ? 20 : 24}px;
+    width: ${(props) => props.$isMobile ? 90 : 170}px;
+    height: ${(props) => props.$isMobile ? 10 : 24}px;
     border: 3px solid ${theme.palette.divider};
     border-radius: ${BorderRadius.pill}px;
 `;
 
 const InnerPillarRow = styled(OuterPillarRow)`
     height: 12px;
-    width: ${(props) => props.$isMobile ? 130 : 150}px;
+    width: ${(props) => props.$isMobile ? 80 : 150}px;
     /* margin: 0px 10px; */
 `;
 
 const InnerContent = styled.div<{$isMobile: boolean}>`
-    width: ${(props) => props.$isMobile ? 110 : 140}px;
-    height: 160px;
+    width: ${(props) => props.$isMobile ? 70 : 140}px;
+    height: ${(props) => props.$isMobile ? 110 : 160}px;
     border: 3px solid ${theme.palette.divider};
     font-size: ${FontSizes.coverTitle}px;
     color: ${theme.palette.text.primary};
-    padding: 10px 2px;
+    padding: ${(props) => props.$isMobile ? '2px 2px' : '10px 2px'};
 `;
 
 const SmallContentText = styled (ContentText)`

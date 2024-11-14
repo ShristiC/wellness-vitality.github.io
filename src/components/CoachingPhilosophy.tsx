@@ -10,31 +10,48 @@ export default function CoachingPhilosophy () {
     const [_, isMobile, isMedium] = useWindowDimensions();
     const smallerScreen = isMobile || isMedium;
 
-    const coachingPoints = ["Accountability Partner", "Sustainable Life Choices", "Champion of Goals", "Honesty and Empathy"];
+    const partners = ["Accountability Partner", "Champion of Goals"];
+    const guide = ["Sustainable Life Choices"];
+    const lead = ["Honesty", "Empathy", "Sincerity"];
     return (
-        <Wrapper $isSmallerScreen={smallerScreen}>
+        <Wrapper $isMobile={smallerScreen}>
             <BlurWrapper/>
             <ContentWrapper>
                 <HeadingTextLight $isMobile={smallerScreen} $color='secondary'>Coaching Philosophy</HeadingTextLight>
-                <StyledContentText $isMobile={smallerScreen}>As a Health and Wellness Nutrition Coach, my coaching is a client-focused partnership that fosters self-awareness, motivation, and positive accountability to achieve meaningful, lasting changes. As my client, you and I will collaborate together to tailor improvement plans to your needs and goals. I will empower you to self-monitor, reflect, and achieve attainable goals. Together, we will create sustainable behavioral changes that will lead you to a longer, healthier, and happier life.</StyledContentText>
-                {coachingPoints.map((point, i) => {
+                <StyledContentText $isMobile={smallerScreen}>As your health and nutritional coach, I will be your...</StyledContentText>
+                {partners.map((point, i) => {
                     return (
                         <PainPointRow key={`pain_point_${i}`}>
-                            <img src={Leaf} height={24} alt="white leaf bullet point"/>
+                            <img src={Leaf} height={isMobile ? 16 : 20} alt="white leaf bullet point"/>
                             <ContentText $isMobile={smallerScreen}>{point}</ContentText>
                         </PainPointRow>
                 );})}
-                
+                 <StyledContentText $isMobile={smallerScreen}>I will guide you in making...</StyledContentText>
+                {guide.map((point, i) => {
+                    return (
+                        <PainPointRow key={`pain_point_${i}`}>
+                            <img src={Leaf} height={isMobile ? 16 : 20} alt="white leaf bullet point"/>
+                            <ContentText $isMobile={smallerScreen}>{point}</ContentText>
+                        </PainPointRow>
+                );})}
+                <StyledContentText $isMobile={smallerScreen}>I will lead with...</StyledContentText>
+                {lead.map((point, i) => {
+                    return (
+                        <PainPointRow key={`pain_point_${i}`}>
+                            <img src={Leaf} height={isMobile ? 16 : 20} alt="white leaf bullet point"/>
+                            <ContentText $isMobile={smallerScreen}>{point}</ContentText>
+                        </PainPointRow>
+                );})}
             </ContentWrapper>
         </Wrapper>
     );
 }
 
-const Wrapper = styled.div<{$isSmallerScreen: boolean}>`
+const Wrapper = styled.div<{$isMobile: boolean}>`
     position: relative;
     background-image: url(${CoachingImage});
     background-position: 60% ;
-    height: ${(props) => props.$isSmallerScreen ? 100 : 50}vh;
+    height: ${(props) => props.$isMobile ? 50 : 50}vh;
     background-size: cover;
     border-radius: ${BorderRadius.button}px;
     padding: 5%;
@@ -57,11 +74,11 @@ const BlurWrapper = styled.div`
 
 const StyledContentText = styled(ContentText)`
     margin-top: ${PaddingOrMargin.extraLarge}px;
-    margin-bottom: ${PaddingOrMargin.extraLarge}px;
+    margin-bottom: ${PaddingOrMargin.large}px;
 `;
 
 const PainPointRow = styled(Row)`
     justify-content: flex-start;
     gap: ${PaddingOrMargin.medium}px;
-    margin: ${PaddingOrMargin.medium}px;
+    margin: ${PaddingOrMargin.small}px;
 `;

@@ -75,4 +75,6 @@ const Layout = styled(Row)<{$isMobile: boolean}>`
     flex-direction: ${(props) => props.$isMobile ? 'column' : 'row'};
     padding-top: 20px;
     gap: ${(props) => props.$isMobile ? '10px' : '0'};
+    justify-content: center;
+    align-items: center;
 `;

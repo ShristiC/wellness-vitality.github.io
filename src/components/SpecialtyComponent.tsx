@@ -22,8 +22,8 @@ export default function SpecialtyComponent({text, imageUrl, imageAlt}: ISpecialt
 
 const Wrapper = styled.div<{$isMobile: boolean}>`
     background-color: ${theme.palette.background.default};
-    width: ${(props) => props.$isMobile ? 150 : 230}px;
-    height: ${(props) => props.$isMobile ? 180 : 290}px;
+    width: ${(props) => props.$isMobile ? 120 : 230}px;
+    height: ${(props) => props.$isMobile ? 120 : 290}px;
     border-radius: ${BorderRadius.button}px;
     padding: ${(props) => props.$isMobile ? 5 : 15}px;
     align-items: center;
@@ -36,8 +36,8 @@ const StyledContentText = styled(ContentText)`
 
 const ImageWrapper = styled.img<{$isMobile: boolean}>`
     background-color: #cccccc;
-    width: ${(props) => props.$isMobile ? 130 : 200}px;
-    height: ${(props) => props.$isMobile ? 130 :200}px;
+    width: ${(props) => props.$isMobile ? 100 : 200}px;
+    height: ${(props) => props.$isMobile ? 100 :200}px;
     margin: 0px ${(props) => props.$isMobile ? 5 : 15}px;
     position: relative;
     top: -50px;

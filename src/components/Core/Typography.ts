@@ -2,21 +2,21 @@ import styled from "@emotion/styled";
 import { theme } from "./Colors";
 
 export const FontSizes = {
-    button: 18,
-    buttonSmall: 16,
-    coverTitle: 60,
-    heading: 36,
-    headingLarge: 56,
-    largeContent: 28,
-    default: 22,
+    button: 16,
+    buttonSmall: 14,
+    coverTitle: 48,
+    heading: 24,
+    headingLarge: 40,
+    largeContent: 20,
+    default: 18,
     mobile: {
-        button: 14,
-        buttonSmall: 12,
-        coverTitle: 35,
-        heading: 26,
-        headingLarge: 40,
-        largeContent: 30,
-        default: 16,
+        button: 12,
+        buttonSmall: 10,
+        coverTitle: 20,
+        heading: 20,
+        headingLarge: 18,
+        largeContent: 16,
+        default: 12,
     }
 }
 
