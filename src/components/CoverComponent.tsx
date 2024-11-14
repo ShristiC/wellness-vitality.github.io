@@ -6,13 +6,16 @@ import { PaddingOrMargin } from './Core/Layout';
 import { ContentTextBold, Title, Weights } from './Core/Typography';
 import { ActionButton } from './CoreButtons';
 import { WhiteLogoIcon } from './Logo';
+import useCoverComponentDimensions from '../hooks/useCoverComponentDimensions';
 
 export default function CoverComponent() {
     const [windowDimensions, isMobile] = useWindowDimensions();
     const isCompact = isMobile && windowDimensions.width <= 450;
+    const [coverHeight] = useCoverComponentDimensions();
+
     return (
-        <FixedTopWrapper $isMobile={isCompact}>
-            <CoverImage src={HomeCoverImg} alt="Family of 3 holding hands and jumping together" />
+        <FixedTopWrapper $isMobile={isCompact} $coverHeight={coverHeight}>
+            <CoverImage src={HomeCoverImg} $isMobile={isCompact} alt="Family of 3 holding hands and jumping together" />
             <BlurContent />
             <CenterContent>
                 <InnerContent $isMobile={isCompact}>
@@ -34,10 +37,10 @@ export default function CoverComponent() {
     );
 }
 
-const FixedTopWrapper = styled.div<{$isMobile: boolean}>`
+export const FixedTopWrapper = styled.div<{$isMobile: boolean, $coverHeight: number}>`
     width: 100%;
-    height: ${(props) => props.$isMobile ? '100vh' : '120vh'};
-    top: 100px;
+    height: ${(props) => props.$coverHeight}vh;
+    top: ${(props) => props.$isMobile ? 50 : 100}px;
     left: 0;
     position: absolute;
     display: flex;
@@ -45,10 +48,10 @@ const FixedTopWrapper = styled.div<{$isMobile: boolean}>`
     justify-content: center;
 `;
 
-const CoverImage = styled.img`
+const CoverImage = styled.img<{$isMobile: boolean}>`
     width: 100%;
     height: 90%;
-    object-fit: cover;
+    object-fit: ${(props) => props.$isMobile ? 'fit' : 'cover'};
     transform: rotateY(180deg);
     filter: brightness(70%);
     position: absolute;
@@ -89,11 +92,11 @@ const BlurContent = styled.div`
 
 const CoverTitle = styled(Title)`
     color: ${theme.palette.getContrastText('default')};
-    text-shadow: 0 0 4px ${theme.palette.text.primary};
+    text-shadow: 0 0 ${(props) => props.$isMobile ? 2 : 4}px ${theme.palette.text.primary};
 `;
 
 const OutlineTitle = styled(Title)`
-    -webkit-text-stroke-width: ${(props) => props.$isMobile ? '2px' : '4px'};
+    -webkit-text-stroke-width: ${(props) => props.$isMobile ? '1px' : '4px'};
     -webkit-text-stroke-color: ${theme.palette.text.secondary};
     color: transparent;
     text-shadow: none;
@@ -104,9 +107,9 @@ const CoverSubtitle = styled(ContentTextBold)`
     color: ${theme.palette.getContrastText('default')};
 `;
 
-const IconWrapper = styled.div<{$isMobile: boolean}>`
+export const IconWrapper = styled.div<{$isMobile: boolean}>`
     position: absolute;
-    bottom: ${(props) => props.$isMobile ? '5%' : '15%'};
+    bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
 `;

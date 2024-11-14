@@ -5,11 +5,15 @@ import { theme } from './Core/Colors';
 import { PaddingOrMargin } from './Core/Layout';
 import { ContentTextBold, Title } from './Core/Typography';
 import { WhiteLogoIcon } from './Logo';
+import useCoverComponentDimensions from '../hooks/useCoverComponentDimensions';
+import { FixedTopWrapper, IconWrapper } from './CoverComponent';
 
 export default function TestimonialsCoverComponent() {
     const [_, isMobile] = useWindowDimensions();
+    const [coverHeight] = useCoverComponentDimensions();
+
     return (
-        <FixedTopWrapper $isMobile={isMobile}>
+        <FixedTopWrapper $isMobile={isMobile} $coverHeight={coverHeight}>
             <CoverImage src={TestimonialsCover} alt="Family of 3 holding hands and jumping together" />
             <BlurContent/>
             <CenterContent>
@@ -17,22 +21,11 @@ export default function TestimonialsCoverComponent() {
                 <CoverSubtitle $isMobile={isMobile}>Better Sleep | Healthy Gut | More Energy | Confidence</CoverSubtitle>
             </CenterContent>
             <IconWrapper $isMobile={isMobile}>
-                <WhiteLogoIcon />
+                <WhiteLogoIcon size={isMobile ? 50 : 100} />
             </IconWrapper>
         </FixedTopWrapper>
     );
 }
-
-const FixedTopWrapper = styled.div<{$isMobile: boolean}>`
-    width: 100%;
-    height: ${(props) => props.$isMobile ? '100vh' : '120vh'};
-    top: 100px;
-    left: 0;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
 
 const CoverImage = styled.img`
     width: 100%;
@@ -76,11 +69,4 @@ const CoverTitle = styled(Title)`
 const CoverSubtitle = styled(ContentTextBold)`
     color: ${theme.palette.getContrastText('default')};
     text-align: center;
-`;
-
-const IconWrapper = styled.div<{$isMobile: boolean}>`
-    position: absolute;
-    bottom: ${(props) => props.$isMobile ? '5%' : '15%'};
-    left: 50%;
-    transform: translateX(-50%);
 `;

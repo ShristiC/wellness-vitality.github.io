@@ -6,9 +6,11 @@ import LeftBackgroundPetals from "./LeftBackgroundPetals";
 import GreenArrowVector from '../assets/cover/Green Arrow.png';
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import RightBackgroundPetals from "./RightBackgroundPetals";
+import useCoverComponentDimensions from "../hooks/useCoverComponentDimensions";
 
 export default function PainPoints() {
     const [_, isMobile] = useWindowDimensions();
+    const [coverHeight] = useCoverComponentDimensions();
 
     const painPoints = [
         'Tired of Taking Medication?', 
@@ -27,13 +29,13 @@ export default function PainPoints() {
 
     ];
     return (
-        <PainPointsWrapper $isMobile={isMobile}>
+        <PainPointsWrapper $isMobile={isMobile} $coverHeight={coverHeight}>
             {isMobile ? 
                 <>
                     <GreenArrow $isMobile={isMobile} src ={GreenArrowVector} alt="curved arrow pointing starting from Pain Points to Resonating Points" />
                     <PainPointRow>
                         <Resonate question="Are you..." bulletPoints={painPoints}/>
-                        <ImagineContentWrapper>
+                        <ImagineContentWrapper $isMobile={isMobile}>
                             <Resonate question="Imagine a life where You..." bulletPoints={imaginePoints} buttonText="Let's Start Today"/>
                         </ImagineContentWrapper>
                     </PainPointRow>
@@ -44,7 +46,7 @@ export default function PainPoints() {
                     <GreenArrow $isMobile={isMobile} src ={GreenArrowVector} alt="curved arrow pointing starting from Pain Points to Resonating Points" />
                     <PainPointRow>
                         <Resonate question="Are you..." bulletPoints={painPoints}/>
-                        <ImagineContentWrapper>
+                        <ImagineContentWrapper $isMobile={isMobile}>
                             <Resonate question="Imagine a life where You..." bulletPoints={imaginePoints} buttonText="Let's Start Today"/>
                         </ImagineContentWrapper>
                     </PainPointRow>
@@ -58,25 +60,25 @@ const PainPointRow = styled(Row)`
     justify-content: space-evenly;
 `;
 
-const PainPointsWrapper = styled.div<{$isMobile: boolean}>`
+const PainPointsWrapper = styled.div<{$isMobile: boolean, $coverHeight: number}>`
     display: block;
     position: relative;
-    margin-top: ${(props) => props.$isMobile ? 100 : 100}vh; // size of cover image
-    padding: ${PaddingOrMargin.extraLarge * 3}px ${(props) => props.$isMobile ? '5%' : '10%'};
+    margin-top: ${(props) => props.$coverHeight}vh; // size of cover image
+    padding: ${(props) => props.$isMobile ? `${PaddingOrMargin.medium}px 5%` : `${PaddingOrMargin.medium * 3}px 10%`};
     max-width: 100%;
     overflow-x: clip;
 `;
 
-const ImagineContentWrapper = styled.div`
+const ImagineContentWrapper = styled.div<{$isMobile: boolean}>`
     position: relative;
-    top: 300px;
+    top: ${(props) => props.$isMobile ? '30vh' : '300px'};
     background-color: ${white};
     z-index: ${TopLayer};
 `;
 
 const GreenArrow = styled.img<{$isMobile: boolean}>`
     position: absolute;
-    bottom: ${(props) => props.$isMobile ? '5%' : '-10%'};
+    bottom: ${(props) => props.$isMobile ? '-40%' : '-10%'};
     left: ${(props) => props.$isMobile ? '0': '15%'};
-    scale: ${(props) => props.$isMobile ? '0.6': '0.8'};
+    scale: ${(props) => props.$isMobile ? '0.4': '0.8'};
 `;

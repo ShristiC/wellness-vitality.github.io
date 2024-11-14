@@ -25,14 +25,14 @@ export default function AboutPage() {
     }
 
     const inspirationStory = [
-        "When I was a young girl, I would feel fatigue within an 1 hour of physical activity. I lacked the energy to chase my siblings and go through the day without napping in between. I was also overweight which led me to have lower self-confidence. Growing up, I thought it was expected, normal even, to feel this way. However, when my father was diagnosed with Type II Diabetes and Kidney Failure, requiring dialysis 3x a week  — I realized these “conditions” were detrimental and not normal.",
-        "Determined to find answers, I began working for a functional and integrative medical doctor. There, I learned of the profound impact holistic approach has on sustainable health and well-being. Inspired, I enrolled in my first Functional Medicine course and became a Certified Functional Medicine Health and Wellness Coach. Seeing success with my own transformation, I dedicated myself to help others discover the root causes of their health challenges, and guide them towards a path of vitality and wellness. ",
+        "My journey begins as a young girl, when I lacked the energy to chase my siblings and had to take an afternoon nap to feel somewhat energized. I had low self confidence due to my physical appearance. Growing up, I didn’t think much of it. Until several years ago, when my father was diagnosed with Type II Diabetes and Kidney Failure (requiring dialysis 3x a week) — I realized these “conditions” were detrimental and not normal.",
+        "Determined to find answers, I began working for a functional and integrative medical doctor. There, I learned of the profound impact sustainable health and well-being has on chronic and long term conditions. Inspired, I enrolled in my first Functional Medicine course and became a Certified Functional Medicine Health and Wellness Coach. Seeing success with my own transformation, I dedicated myself to help others discover the root causes of their health challenges, and guide them towards a path of vitality and wellness. ",
+
     ];
 
     const experiences = [
-        "I have worked as a Functional Medicine Health and Wellness Coach for 6+ years. During my initial years, I closely worked with Functional and Integrative Medical Doctors by providing individualized care plans to clients and fostering a positive journey for clients to meet their desired goals. During the peak of the COVID 19 Pandemic, I founded Wellness n Vitality with the hope to empower people to take a proactive and preventative approach to their health. Since then, I have worked with over 40+ patients across the world, offer remote first services, and can conduct coaching in English, Spanish, Hindi, and Bengali.",
-        "I have experience working with clients who have chronic conditions such as Type II Diabetes, Arthritis, IBS, and Auto-Immune Diseases leading some to even reverse their diagnosis! I also have experience with weight loss and stress management programs leading to results within a couple of weeks. I am an expert in planning delicious, healthy, and nutritious meals — primarily improving Indian Vegetarian diets, but can provide consultation on other cuisines and dietary interests too. Along with 1-1 individualized coaching, I have also had the honor of conducting group coaching sessions, workshops, seminars and more to raise educational awareness.",
-        "I value my client’s goals and provide customized plans that are collaborative, positive, and sustainable during the health journey. I understand that improving our health journey can be a long and stressful time, but I want to be your champion and cheer leader, promising to be there with you every step of the way."
+        "I have worked as a Functional Medicine Health and Wellness Coach for 6+ years. During my initial years, I closely worked with Functional and Integrative Doctors by providing individualized care plans to clients and fostering a positive journey for clients to meet their desired goals. During the peak of the COVID 19 Pandemic, I founded Wellness n Vitality empowering people to take a proactive and preventative approach to their health. Since then, I have worked with over 50+ patients across the world, offer remote first services, and conduct coaching in English, Spanish, Hindi, and Bengali.",
+        "I have experience working with clients who have chronic conditions such as Type II Diabetes, Arthritis, IBS, Stress, and Auto-Immune Diseases. My expertise lies in addressing root causes, taking a holistic approach to my client’s well being, and being my client’s champion from start to finish.  Planning delicious, healthy, and nutritious meals is my favorite - with an added plus of bringing these into Indian Vegetarian diets. Along with 1-1 individualized coaching, I also conduct group coaching sessions, corporate workshops, community workshops, and seminars to raise educational awareness.",
     ];
 
     const [showInspiration, setShowInspiration] = useState(true);
@@ -47,9 +47,15 @@ export default function AboutPage() {
     }
 
     const ProfessionalComponent = () => {
+       let dimension: 'wide' | 'medium' | 'compact'  = 'wide';
+        if (isMedium) {
+            dimension = 'medium';
+        } else if (isMobile) {
+            dimension = 'compact';
+        }
         return (
             <ProfessionalContent $isMobile={isMobile}>
-                <ProfessionalWrap $isMedium={isMedium} src={ProfessionalImage} alt="Professional image of a South Asian brown woman, with parted dark brown hair, dark brown eyes, and a smiling friendly face. She is wearing a dark green dress with her arms crossed and her body slightly tilted."/>
+                <ProfessionalWrap $dimension={dimension} src={ProfessionalImage} alt="Professional image of a South Asian brown woman, with parted dark brown hair, dark brown eyes, and a smiling friendly face. She is wearing a dark green dress with her arms crossed and her body slightly tilted."/>
                 <ContentTextBold $isMobile={isMobile} style={{marginTop: "20px", textAlign: "center"}}>Anita Chitlangia</ContentTextBold>
                 <ContentText $isMobile={isMobile} style={{textAlign: "center"}}>Founder of Wellness n Vitality</ContentText>
             </ProfessionalContent>
@@ -127,15 +133,27 @@ const width: {[key in 'wide' | 'medium' | 'compact']: string} = {
     'compact': '100%',
 };
 
+const padding: {[key in 'wide' | 'medium' | 'compact']: string} = {
+    'wide': '20px 0px',
+    'medium': '15px 0px',
+    'compact': '15px 0px',
+};
+
 const ContentWrap = styled(InnerContent)<{$variant: 'wide' | 'medium' | 'compact'}>`
-    justify-content: space-around;
+    justify-content: ${(props) => props.$variant == 'compact' ? 'start': 'space-around'};
     text-indent: 48px;
-    padding: 20px 0px;
+    padding: ${(props) => padding[props.$variant]};
     width: ${(props) => width[props.$variant]};
 `;
 
-const ProfessionalWrap = styled.img<{$isMedium: boolean}>`
-    height: ${(props) => props.$isMedium ? 300 : 500}px;
+const heights: {[key in 'wide' | 'medium' | 'compact']: string} = {
+    'wide': '500px',
+    'medium': '300px',
+    'compact': '40vh',
+};
+
+const ProfessionalWrap = styled.img<{$dimension: 'wide' | 'medium' | 'compact'}>`
+    height: ${(props) => heights[props.$dimension]};
 `;
 
 const ProfessionalContent = styled.div<{$isMobile: boolean}>`
@@ -143,7 +161,7 @@ const ProfessionalContent = styled.div<{$isMobile: boolean}>`
     flex-direction: column;
     justify-content: flex-start;
     align-self: center;
-    height: ${(props) => props.$isMobile ? '80vh' : 'auto'};
+    height: ${(props) => props.$isMobile ? '50vh' : 'auto'};
 `;
 
 const CallToAction = styled.div`

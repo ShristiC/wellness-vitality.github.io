@@ -19,7 +19,7 @@ export default function Resonate({question, bulletPoints, buttonText}: IResonate
                 {bulletPoints.map((point, i) =>  {
                     return (
                         <PainPointRow key={`pain_point_${i}`}>
-                            <img src={Leaf} height={24} alt="Leaf shaped bullet point"/>
+                            <img src={Leaf} height={24} alt="Leaf shaped bullet point" width={isMobile ? 15 : 24}/>
                             <ContentText $isMobile={isMobile}>{point}</ContentText>
                         </PainPointRow>
                     );
@@ -45,7 +45,7 @@ const ContentWrapper = styled.div`
     flex-direction: column;
     display: flex;
     gap: ${PaddingOrMargin.large}px;
-    margin: ${PaddingOrMargin.large}px 0px;
+    margin: ${PaddingOrMargin.medium}px 0px;
 `;
 
 const PainPointRow = styled(Row)`

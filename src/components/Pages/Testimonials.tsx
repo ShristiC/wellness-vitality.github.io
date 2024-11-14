@@ -116,8 +116,8 @@ function TestimonialCard ({title, date, videoURL, onClick}: TestimonialCardProps
 const VideoTestimonials = styled.div<{$isMobile: boolean}>`
     display: block;
     position: relative;
-    margin-top: ${(props) => props.$isMobile ? 100 : 110}vh; // size of cover image
-    padding: ${PaddingOrMargin.extraLarge * 3}px 10%;
+    margin-top: ${(props) => props.$isMobile ? 50 : 110}vh; // size of cover image
+    padding: ${PaddingOrMargin.large * 3}px 10%;
 `;
 
 const Video = styled.iframe<{$isMobile: boolean}>`

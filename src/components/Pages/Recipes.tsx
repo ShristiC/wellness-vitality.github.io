@@ -206,7 +206,7 @@ const Content = styled.div`
     padding: ${PaddingOrMargin.extraLarge}px 10% ${PaddingOrMargin.extraLarge * 3}px 10%;
     max-width: 100%;
     overflow-x: clip;
-    margin-bottom: ${PaddingOrMargin.extraLarge * 3}px;
+    margin-bottom: ${PaddingOrMargin.large * 3}px;
 `;
 
 const InnerContent = styled.div`
