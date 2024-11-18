@@ -34,10 +34,9 @@ export default function Resonate({question, bulletPoints, buttonText}: IResonate
 }
 
 const Wrapper = styled.div<{$hasBorder: boolean, $isMobile: boolean}>`
-    display: inline-block;
     flex: 1;
-    border: ${(props) => props.$hasBorder ? '2px solid black' : 'none'};
-    padding: ${(props) => props.$isMobile ? PaddingOrMargin.medium : PaddingOrMargin.large * 2}px;
+    border: ${(props) => props.$hasBorder ? 'none' : 'none'};
+    padding: ${(props) => props.$isMobile ? `${PaddingOrMargin.small}px` : `${PaddingOrMargin.large * 2}px`};
     border-radius: ${BorderRadius.button}px;
 `;
 
