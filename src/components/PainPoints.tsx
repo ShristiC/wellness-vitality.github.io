@@ -32,13 +32,10 @@ export default function PainPoints() {
         <PainPointsWrapper $isMobile={isMobile} $coverHeight={coverHeight}>
             {isMobile ? 
                 <>
-                    <GreenArrow $isMobile={isMobile} src ={GreenArrowVector} alt="curved arrow pointing starting from Pain Points to Resonating Points" />
-                    <PainPointRow>
-                        <Resonate question="Are you..." bulletPoints={painPoints}/>
-                        <ImagineContentWrapper $isMobile={isMobile}>
-                            <Resonate question="Imagine a life where You..." bulletPoints={imaginePoints} buttonText="Let's Start Today"/>
-                        </ImagineContentWrapper>
-                    </PainPointRow>
+                    <Resonate question="Are you..." bulletPoints={painPoints}/>
+                    <ImagineContentWrapper $isMobile={isMobile}>
+                        <Resonate question="Imagine a life where You..." bulletPoints={imaginePoints} buttonText="Let's Start Today"/>
+                    </ImagineContentWrapper>
                 </>:
                 <>
                     <RightBackgroundPetals />
@@ -71,7 +68,7 @@ const PainPointsWrapper = styled.div<{$isMobile: boolean, $coverHeight: number}>
 
 const ImagineContentWrapper = styled.div<{$isMobile: boolean}>`
     position: relative;
-    top: ${(props) => props.$isMobile ? '30vh' : '300px'};
+    top: ${(props) => props.$isMobile ? '0' : '300px'};
     background-color: ${white};
     z-index: ${TopLayer};
 `;

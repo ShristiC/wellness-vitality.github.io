@@ -24,7 +24,7 @@ const Wrapper = styled.div<{$isMobile: boolean}>`
     height: ${(props) => props.$isMobile ? '30vh' : '60vh'};
     background-size: cover;
     border-radius: ${BorderRadius.button}px;
-    margin-top: 300px;
+    margin-top: ${(props) => props.$isMobile ? '30px' : '300px'};
     /* Flexbox for centering */
     display: flex;
     align-items: center; /* Vertical centering */
