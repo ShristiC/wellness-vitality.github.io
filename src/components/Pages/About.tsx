@@ -9,20 +9,9 @@ import FolderTab from "../FolderTab";
 import Footer from "../Footer";
 import Heading from "../Heading";
 import Qualifications from "../Qualifications";
-import { Padding } from "@mui/icons-material";
 
 export default function AboutPage() {
     const [_, isMobile, isMedium] = useWindowDimensions();
-    let variant: 'wide' | 'medium' | 'compact';
-    if (!isMobile && !isMedium) {
-        variant = 'wide';
-    } else if (!isMobile && isMedium) {
-        variant = 'medium';
-    } else if (isMobile && !isMedium) {
-        variant = 'compact';
-    } else {
-        variant = 'wide';
-    }
 
     const inspirationStory = [
         "My journey begins as a young girl, when I lacked the energy to chase my siblings and had to take an afternoon nap to feel somewhat energized. I had low self confidence due to my physical appearance. Growing up, I didn’t think much of it. Until several years ago, when my father was diagnosed with Type II Diabetes and Kidney Failure (requiring dialysis 3x a week) — I realized these “conditions” were detrimental and not normal.",
