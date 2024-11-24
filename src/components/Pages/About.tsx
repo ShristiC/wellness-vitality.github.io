@@ -1,28 +1,17 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
 import ProfessionalImage from "../../assets/anita_professional.jpg";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import CoachingPhilosophy from "../CoachingPhilosophy";
 import { PaddingOrMargin, Row } from "../Core/Layout";
 import { ContentText, ContentTextBold, Title } from "../Core/Typography";
 import { ActionButton } from "../CoreButtons";
-import { ExpanderCard } from "../ExpanderCard";
+import FolderTab from "../FolderTab";
 import Footer from "../Footer";
 import Heading from "../Heading";
 import Qualifications from "../Qualifications";
 
 export default function AboutPage() {
     const [_, isMobile, isMedium] = useWindowDimensions();
-    let variant: 'wide' | 'medium' | 'compact';
-    if (!isMobile && !isMedium) {
-        variant = 'wide';
-    } else if (!isMobile && isMedium) {
-        variant = 'medium';
-    } else if (isMobile && !isMedium) {
-        variant = 'compact';
-    } else {
-        variant = 'wide';
-    }
 
     const inspirationStory = [
         "My journey begins as a young girl, when I lacked the energy to chase my siblings and had to take an afternoon nap to feel somewhat energized. I had low self confidence due to my physical appearance. Growing up, I didn’t think much of it. Until several years ago, when my father was diagnosed with Type II Diabetes and Kidney Failure (requiring dialysis 3x a week) — I realized these “conditions” were detrimental and not normal.",
@@ -35,17 +24,6 @@ export default function AboutPage() {
         "I have experience working with clients who have chronic conditions such as Type II Diabetes, Arthritis, IBS, Stress, and Auto-Immune Diseases. My expertise lies in addressing root causes, taking a holistic approach to my client’s well being, and being my client’s champion from start to finish.  Planning delicious, healthy, and nutritious meals is my favorite - with an added plus of bringing these into Indian Vegetarian diets. Along with 1-1 individualized coaching, I also conduct group coaching sessions, corporate workshops, community workshops, and seminars to raise educational awareness.",
     ];
 
-    const [showInspiration, setShowInspiration] = useState(true);
-    const [showExperience, setShowExperience] = useState(false);
-
-    const handleInspirationOpen = () => {
-        setShowInspiration(!showInspiration);
-    }
-
-    const handleExperienceOpen = () => {
-        setShowExperience(!showExperience)
-    }
-
     const ProfessionalComponent = () => {
        let dimension: 'wide' | 'medium' | 'compact'  = 'wide';
         if (isMedium) {
@@ -56,8 +34,16 @@ export default function AboutPage() {
         return (
             <ProfessionalContent $isMobile={isMobile}>
                 <ProfessionalWrap $dimension={dimension} src={ProfessionalImage} alt="Professional image of a South Asian brown woman, with parted dark brown hair, dark brown eyes, and a smiling friendly face. She is wearing a dark green dress with her arms crossed and her body slightly tilted."/>
-                <ContentTextBold $isMobile={isMobile} style={{marginTop: "20px", textAlign: "center"}}>Anita Chitlangia</ContentTextBold>
-                <ContentText $isMobile={isMobile} style={{textAlign: "center"}}>Founder of Wellness n Vitality</ContentText>
+                {isMobile ? 
+                    <div style={{textAlign: 'center', marginTop: `${PaddingOrMargin.large}px`}}>
+                        <ContentTextBold $isMobile={isMobile}>Anita Chitlangia</ContentTextBold>
+                        <ContentText $isMobile={isMobile}>Founder of Wellness n Vitality</ContentText>
+                    </div> : 
+                    <ProfessionContentText>
+                        <ContentTextBold $isMobile={isMobile}>Anita Chitlangia</ContentTextBold>
+                        <ContentText $isMobile={isMobile}>Founder of Wellness n Vitality</ContentText>
+                    </ProfessionContentText>
+                }
             </ProfessionalContent>
     );
  }
@@ -68,24 +54,8 @@ export default function AboutPage() {
                 <InnerContent>
                     <Title $isMobile={isMobile}>Empowering Wellness</Title>
                     <Layout $isMobile={isMobile}>
-                        {isMobile && ProfessionalComponent()}
-                        <QuickWrap>
-                            <ExpanderCard title="My Inspiration" open={showInspiration} handleOpen={handleInspirationOpen}>
-                                <ContentWrap $variant={variant}>
-                                        {inspirationStory.map((story, i) => {
-                                            return <ContentText $isMobile={isMobile} key={`inspiration_${i}`}>{story}</ContentText>
-                                        })}
-                                </ContentWrap>
-                            </ExpanderCard>
-                            <ExpanderCard title="My Experience" open={showExperience} handleOpen={handleExperienceOpen}>
-                                <ContentWrap $variant={variant}>
-                                        {experiences.map((story, i) => {
-                                            return <ContentText $isMobile={isMobile} key={`credibility_${i}`}>{story}</ContentText>
-                                        })}
-                                </ContentWrap>
-                            </ExpanderCard>
-                        </QuickWrap>
-                        {!isMobile && ProfessionalComponent()}
+                        <FolderTab labels={["Inspiration", "Experience"]} tab1Content={inspirationStory} tab2Content={experiences}/>
+                        {ProfessionalComponent()}
                     </Layout>
                 </InnerContent>
             </Content>
@@ -116,44 +86,17 @@ const Content = styled.div`
 const InnerContent = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${PaddingOrMargin.extraLarge}px;
-`;
-
-const QuickWrap = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 20px;
-    transition: width 2s, height 4s, ease;
-`;
-
-const width: {[key in 'wide' | 'medium' | 'compact']: string} = {
-    'wide': '600px',
-    'medium': '400px',
-    'compact': '100%',
-};
-
-const padding: {[key in 'wide' | 'medium' | 'compact']: string} = {
-    'wide': '20px 0px',
-    'medium': '15px 0px',
-    'compact': '15px 0px',
-};
-
-const ContentWrap = styled(InnerContent)<{$variant: 'wide' | 'medium' | 'compact'}>`
-    justify-content: ${(props) => props.$variant == 'compact' ? 'start': 'space-around'};
-    text-indent: 48px;
-    padding: ${(props) => padding[props.$variant]};
-    width: ${(props) => width[props.$variant]};
 `;
 
 const heights: {[key in 'wide' | 'medium' | 'compact']: string} = {
-    'wide': '500px',
+    'wide': '550px',
     'medium': '300px',
     'compact': '40vh',
 };
 
 const ProfessionalWrap = styled.img<{$dimension: 'wide' | 'medium' | 'compact'}>`
     height: ${(props) => heights[props.$dimension]};
+    object-fit: cover;
 `;
 
 const ProfessionalContent = styled.div<{$isMobile: boolean}>`
@@ -174,6 +117,14 @@ const CallToAction = styled.div`
 `;
 
 const Layout = styled(Row)<{$isMobile: boolean}>`
-    margin-top: ${(props) => props.$isMobile ? 0 : 25}px;
+    margin-top: ${(props) => props.$isMobile ? PaddingOrMargin.medium: PaddingOrMargin.medium}px;
     flex-direction: ${(props) => props.$isMobile ? 'column' : 'row'};
+`;
+
+const ProfessionContentText = styled.div`
+    position: absolute;
+    top: 220px;
+    right: 10%;
+    max-width: 170px;
+    flex-wrap: wrap;
 `;

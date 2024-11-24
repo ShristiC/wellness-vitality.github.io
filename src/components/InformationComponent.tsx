@@ -21,7 +21,7 @@ export default function InformationComponent () {
 const Wrapper = styled.div<{$isMobile: boolean}>`
     position: relative;
     background-image: url(${FruitsImage});
-    height: ${(props) => props.$isMobile ? '30vh' : '60vh'};
+    height: ${(props) => props.$isMobile ? '30vh' : '50vh'};
     background-size: cover;
     border-radius: ${BorderRadius.button}px;
     margin-top: ${(props) => props.$isMobile ? '30px' : '300px'};
@@ -32,10 +32,10 @@ const Wrapper = styled.div<{$isMobile: boolean}>`
 `;
 
 const ContentWrapper = styled.div`
-    padding: 5% 5%;
+    padding: 0% 10%;
     color: ${theme.palette.text.secondary};
 `;
 
 const StyledContentText = styled(ContentText)`
-    margin-top: ${PaddingOrMargin.large}px;
+    margin-top: ${PaddingOrMargin.extraLarge}px;
 `;

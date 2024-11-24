@@ -1,15 +1,16 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import QuoteIcon from "../assets/icons/quote.svg";
+import Anonymous from "../assets/testimonials/anonymous.jpg";
 import Dev from "../assets/testimonials/Dev.jpg";
 import Radha from "../assets/testimonials/Radha.png";
 import Samy from "../assets/testimonials/Samy.png";
 import Suman from "../assets/testimonials/Suman.png";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import { darkGreen, lightGreen, white } from "./Core/Colors";
 import { BorderRadius, Row } from "./Core/Layout";
 import { ContentText, ContentTextBold, DisclaimerText, HeadingTextLight } from "./Core/Typography";
 import { HyperlinkButton } from "./CoreButtons";
-import useWindowDimensions from "../hooks/useWindowDimensions";
 
 interface TestimonialItem {
     title: string;
@@ -128,10 +129,10 @@ function WrittenTestimonial({testimonial, id}: InnerWrittenContentProps) {
 
     return (
         <Card key={id}>
-            <img src={QuoteIcon} width={isMobile ? 20 : 100} alt=""/>
+            <img src={QuoteIcon} width={isMobile ? 20 : 40} alt=""/>
             <CardWrapper $isMobile={isMobile}>
                 {isMobile && <InnerContent>
-                    {testimonial.imageUrl !== "" && <TestimonialImage src={testimonial.imageUrl} width={150} height={150} alt={testimonial.alt}/>}
+                    <TestimonialImage src={testimonial.imageUrl ? testimonial.imageUrl : Anonymous} width={150} height={150} alt={testimonial.alt}/>
                     <DisclaimerText $isMobile={isMobile} style={{textAlign: "center", alignSelf: "center"}}>{testimonial.name}</DisclaimerText>
                 </InnerContent>}
                 <InnerContent style={{width: "65%"}}>
@@ -140,7 +141,7 @@ function WrittenTestimonial({testimonial, id}: InnerWrittenContentProps) {
                     {!isSelected && <HyperlinkButton $variant="testimonials" onClick={() => setIsSelected(true)}>See More</HyperlinkButton>}
                 </InnerContent>
                 {!isMobile && <InnerContent>
-                    {testimonial.imageUrl !== "" && <TestimonialImage src={testimonial.imageUrl} width={150} height={150} alt={testimonial.alt}/>}
+                    <TestimonialImage src={testimonial.imageUrl ? testimonial.imageUrl : Anonymous} width={150} height={150} alt={testimonial.alt}/>
                     <DisclaimerText $isMobile={isMobile} style={{textAlign: "center", alignSelf: "center"}}>{testimonial.name}</DisclaimerText>
                 </InnerContent>}
             </CardWrapper>

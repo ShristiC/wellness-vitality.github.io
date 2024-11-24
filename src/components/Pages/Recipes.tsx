@@ -23,7 +23,7 @@ import VegLasagna from "../../assets/gallery/Vegge lasagna.jpg";
 import VegTapioca from "../../assets/gallery/Vegges with Tapioca.jpg";
 import WatermelonJuice from "../../assets/gallery/Watermelon Chia Juice.jpg";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-import { PaddingOrMargin, Row } from "../Core/Layout";
+import { BorderRadius, PaddingOrMargin, Row } from "../Core/Layout";
 import { ContentText, DisclaimerText, Title } from "../Core/Typography";
 import Footer from "../Footer";
 import Heading from "../Heading";
@@ -180,7 +180,12 @@ export default function RecipesPage() {
                     <Title $isMobile={isMobile}>Gallery</Title>
                     <ContentText $isMobile={isMobile}>Healthy eating doesn't have to be bland -- check out these tasty dishes, reccommendations, and success stories!</ContentText>
                     <Gallery>
-                        <CoverImg src={items[currIndex].image} alt={items[currIndex].alt}/>
+                        <CoverImgContainer>
+                            <CoverImg
+                                src={items[currIndex].image}
+                                alt={items[currIndex].alt}
+                            />
+                        </CoverImgContainer>
                         <ContentText $isMobile={isMobile} style={{textAlign: "center"}}>{items[currIndex].title}</ContentText>
                         <DisclaimerText $isMobile={isMobile} style={{textAlign: "center"}}>{items[currIndex].ingredients}</DisclaimerText>
                         <GalleryRow>
@@ -215,10 +220,28 @@ const InnerContent = styled.div`
     gap: ${PaddingOrMargin.extraLarge}px;
 `;
 
+const CoverImgContainer = styled.div`
+  width: 500px; /* Full width of the parent container */
+  height: 400px; /* Fixed height for the Cover component */
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  align-self: center;
+  background-color: black; /* Black background behind the image */
+  overflow: hidden; /* Ensure no overflow from images */
+  border-radius: ${BorderRadius.button}px; /* Rounded corners */
+  margin: ${PaddingOrMargin.medium}px auto; /* Add space above and below the image */
+
+  @media (max-width: 768px) {
+    width: 90%; /* Adjust for mobile view */
+    height: 40vh; /* Let height adjust based on content */
+  }
+`;
+
 const CoverImg = styled.img`
-    width: 100%;
-    height: 370px;
-    object-fit: contain;
+  max-width: 100%; /* Scale the image to fit within the container width */
+  max-height: 100%; /* Scale the image to fit within the container height */
+  object-fit: contain; /* Maintain the aspect ratio, ensuring no cropping */
 `;
 
 const GalleryItem = styled.img`

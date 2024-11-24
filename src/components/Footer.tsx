@@ -68,11 +68,11 @@ export default function Footer() {
 }
 
 const Wrapper = styled.div<{$isMobile: boolean, $isMedium: boolean}>`
-    height: ${(props) => props.$isMedium ? 60 : 40}vh;
+    /* height: ${(props) => props.$isMedium ? 40 : 30}vh; */
     background: ${offWhite};
     border-top-right-radius: ${BorderRadius.button}px;
     border-top-left-radius: ${BorderRadius.button}px;
-    padding: ${PaddingOrMargin.extraLarge}px ${PaddingOrMargin.large * 3}px;
+    padding: ${PaddingOrMargin.XXXLarge}px 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

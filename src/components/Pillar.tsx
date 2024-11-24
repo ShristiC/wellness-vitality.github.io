@@ -39,25 +39,30 @@ const Wrapper = styled.div<{$isMobile: boolean}>`
 `;
 
 const OuterPillarRow = styled.div<{$isMobile: boolean}>`
-    width: ${(props) => props.$isMobile ? 90 : 170}px;
+    width: ${(props) => props.$isMobile ? 95 : 170}px;
     height: ${(props) => props.$isMobile ? 10 : 24}px;
     border: 3px solid ${theme.palette.divider};
     border-radius: ${BorderRadius.pill}px;
 `;
 
 const InnerPillarRow = styled(OuterPillarRow)`
-    height: 12px;
-    width: ${(props) => props.$isMobile ? 80 : 150}px;
+    height: 10px;
+    width: ${(props) => props.$isMobile ? 87 : 150}px;
     /* margin: 0px 10px; */
 `;
 
 const InnerContent = styled.div<{$isMobile: boolean}>`
-    width: ${(props) => props.$isMobile ? 70 : 140}px;
-    height: ${(props) => props.$isMobile ? 110 : 160}px;
-    border: 3px solid ${theme.palette.divider};
-    font-size: ${FontSizes.coverTitle}px;
-    color: ${theme.palette.text.primary};
-    padding: ${(props) => props.$isMobile ? '2px 2px' : '10px 2px'};
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  width: ${(props) => (props.$isMobile ? '80px' : '135px')};
+  height: ${(props) => (props.$isMobile ? '110px' : '160px')};
+  border: 3px solid ${theme.palette.divider};
+  font-size: ${FontSizes.coverTitle}px;
+  color: ${theme.palette.text.primary};
+  padding: ${(props) => (props.$isMobile ? '2px 0px' : '0px')};
 `;
 
 const SmallContentText = styled (ContentText)`

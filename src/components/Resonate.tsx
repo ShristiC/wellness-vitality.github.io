@@ -36,7 +36,7 @@ export default function Resonate({question, bulletPoints, buttonText}: IResonate
 const Wrapper = styled.div<{$hasBorder: boolean, $isMobile: boolean}>`
     flex: 1;
     border: ${(props) => props.$hasBorder ? 'none' : 'none'};
-    padding: ${(props) => props.$isMobile ? `${PaddingOrMargin.small}px` : `${PaddingOrMargin.large * 2}px`};
+    padding: ${(props) => props.$isMobile ? `${PaddingOrMargin.small}px` : `${PaddingOrMargin.large}px`};
     border-radius: ${BorderRadius.button}px;
 `;
 
@@ -45,6 +45,7 @@ const ContentWrapper = styled.div`
     display: flex;
     gap: ${PaddingOrMargin.large}px;
     margin: ${PaddingOrMargin.medium}px 0px;
+    margin-top: ${PaddingOrMargin.large}px;
 `;
 
 const PainPointRow = styled(Row)`

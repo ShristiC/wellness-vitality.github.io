@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Row } from "./Core/Layout";
 import { ActionButton, CoreButton } from "./CoreButtons";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import styled from "@emotion/styled";
 
 interface INavigationItem {
     name: string,
@@ -26,10 +27,14 @@ export default function NavigationBar() {
                     {item.name}
                 </CoreButton>
             })}
-            <ActionButton $variant="default" $isMobile={isMobile} onClick={(e) => {
+            <StyledButton $variant="default" $isMobile={isMobile} onClick={(e) => {
                         e.preventDefault();
                         window.open("https://my.practicebetter.io/#/5c6a01b7627db308702273dc/bookings?step=services", "_blank", "noreferrer");
-            }}>Learn More</ActionButton>
+            }}>Learn More</StyledButton>
         </Row>
     );
 }
+
+const StyledButton = styled(ActionButton)`
+    width: fit-content;
+`;

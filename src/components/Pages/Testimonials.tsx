@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { gray } from "../Core/Colors";
 import { BorderRadius, PaddingOrMargin, Row } from "../Core/Layout";
 import { ContentText, ContentTextBold, DisclaimerText, HeadingText } from "../Core/Typography";
 import Footer from "../Footer";
 import Heading from "../Heading";
 import TestimonialsCoverComponent from "../TestimonialsCoverComponents";
-import { useState } from "react";
 import WrittenTestimonials from "../WrittenTestimonials";
-import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export default function TestimonialsPage() {
     const [currIndex, setCurrIndex] = useState(0);
@@ -143,9 +143,10 @@ const CoverVideoWrapper = styled(Row)<{$isMobile: boolean}>`
 
 const Card = styled(Row)`
     background-color: ${gray};
+    background-color: rgba(128, 128, 128, 0.2); // gray with 20% opacity
     border-radius: ${BorderRadius.button}px;
     padding: 15px;
-    width: 520px;
+    min-width: 300px;
     gap: 15px;
     justify-content: space-evenly;
     height: 150px;

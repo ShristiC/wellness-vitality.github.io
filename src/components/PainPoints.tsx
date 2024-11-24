@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import Resonate from "./Resonate";
-import { PaddingOrMargin, Row, TopLayer } from "./Core/Layout";
-import { white } from "./Core/Colors";
-import LeftBackgroundPetals from "./LeftBackgroundPetals";
 import GreenArrowVector from '../assets/cover/Green Arrow.png';
-import useWindowDimensions from "../hooks/useWindowDimensions";
-import RightBackgroundPetals from "./RightBackgroundPetals";
 import useCoverComponentDimensions from "../hooks/useCoverComponentDimensions";
+import useWindowDimensions from "../hooks/useWindowDimensions";
+import { theme, white } from "./Core/Colors";
+import { BorderRadius, PaddingOrMargin, Row, TopLayer } from "./Core/Layout";
+import LeftBackgroundPetals from "./LeftBackgroundPetals";
+import Resonate from "./Resonate";
+import RightBackgroundPetals from "./RightBackgroundPetals";
 
 export default function PainPoints() {
     const [_, isMobile] = useWindowDimensions();
@@ -32,9 +32,9 @@ export default function PainPoints() {
         <PainPointsWrapper $isMobile={isMobile} $coverHeight={coverHeight}>
             {isMobile ? 
                 <>
-                    <Resonate question="Are you..." bulletPoints={painPoints}/>
+                    <Resonate question="Are You..." bulletPoints={painPoints}/>
                     <ImagineContentWrapper $isMobile={isMobile}>
-                        <Resonate question="Imagine a life where You..." bulletPoints={imaginePoints} buttonText="Let's Start Today"/>
+                        <Resonate question="Imagine a Life Where You..." bulletPoints={imaginePoints} buttonText="Let's Start Today"/>
                     </ImagineContentWrapper>
                 </>:
                 <>
@@ -42,9 +42,9 @@ export default function PainPoints() {
                     <LeftBackgroundPetals />
                     <GreenArrow $isMobile={isMobile} src ={GreenArrowVector} alt="curved arrow pointing starting from Pain Points to Resonating Points" />
                     <PainPointRow>
-                        <Resonate question="Are you..." bulletPoints={painPoints}/>
+                        <Resonate question="Are You..." bulletPoints={painPoints}/>
                         <ImagineContentWrapper $isMobile={isMobile}>
-                            <Resonate question="Imagine a life where You..." bulletPoints={imaginePoints} buttonText="Let's Start Today"/>
+                            <Resonate question="Imagine a Life Where You..." bulletPoints={imaginePoints} buttonText="Let's Start Today"/>
                         </ImagineContentWrapper>
                     </PainPointRow>
                 </>
@@ -55,6 +55,7 @@ export default function PainPoints() {
 
 const PainPointRow = styled(Row)`
     justify-content: space-evenly;
+    padding-bottom: ${PaddingOrMargin.large}px;
 `;
 
 const PainPointsWrapper = styled.div<{$isMobile: boolean, $coverHeight: number}>`
@@ -71,11 +72,13 @@ const ImagineContentWrapper = styled.div<{$isMobile: boolean}>`
     top: ${(props) => props.$isMobile ? '0' : '300px'};
     background-color: ${white};
     z-index: ${TopLayer};
+    border: ${(props) => props.$isMobile ? '0px' : '2px'} solid ${theme.palette.text.primary};
+    border-radius: ${(props) => props.$isMobile ? '0' : BorderRadius.button}px;
 `;
 
 const GreenArrow = styled.img<{$isMobile: boolean}>`
     position: absolute;
-    bottom: ${(props) => props.$isMobile ? '-40%' : '-10%'};
-    left: ${(props) => props.$isMobile ? '0': '15%'};
+    bottom: ${(props) => props.$isMobile ? '-40%' : '-15%'};
+    left: ${(props) => props.$isMobile ? '0': '25%'};
     scale: ${(props) => props.$isMobile ? '0.4': '0.8'};
 `;
