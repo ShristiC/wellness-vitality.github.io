@@ -23,7 +23,7 @@ export default function SpecialtyComponent({text, imageUrl, imageAlt}: ISpecialt
 const Wrapper = styled.div<{$isMobile: boolean}>`
     background-color: ${theme.palette.background.default};
     width: ${(props) => props.$isMobile ? 120 : 230}px;
-    height: ${(props) => props.$isMobile ? 120 : 290}px;
+    height: ${(props) => props.$isMobile ? 120 : 260}px;
     border-radius: ${BorderRadius.button}px;
     padding: ${(props) => props.$isMobile ? 5 : 15}px;
     align-items: center;

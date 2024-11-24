@@ -12,10 +12,10 @@ export const ActionButton = styled(BaseButton) <{ $variant: 'default' | 'paper',
     border-radius: ${BorderRadius.button}px;
     background-color: ${(props) => theme.palette.background[props.$variant]};
     font-size: ${(props) => props.$isMobile ? `${FontSizes.mobile.buttonSmall}px` : `${FontSizes.buttonSmall}px`};
-    padding: ${(props) => props.$isMobile ? '8px 10px' : '15px 30px'};
+    padding: ${(props) => props.$isMobile ? '10px 10px' : '15px 30px'};
     color: ${(props) => theme.palette.getContrastText(props.$variant)};
     font-weight: ${(props) => props.$variant == 'default' ? Weights.regular : Weights.light};
-    width: fit-content;
+    width: ${(props) => props.$isMobile ? '100%': 'fit-content'};
 `;
 
 export const CoreButton = styled(BaseButton) <{$isMobile: boolean}>`
@@ -31,7 +31,7 @@ const linkColors: {[key in linkVariant]: string} = {
 }
 
 export const HyperlinkButton = styled(BaseButton)<{$variant: 'default' | 'testimonials'}>`
-    font-size: ${FontSizes.button}px;
+    font-size: ${FontSizes.default}px;
     text-decoration: underline;
     background: transparent;
     color: ${(props) => linkColors[props.$variant]};

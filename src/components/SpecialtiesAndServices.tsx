@@ -57,9 +57,10 @@ const Wrapper = styled.div`
 `;
 
 const StyledRow = styled(Row)<{$isMobile: boolean}>`
-    padding: ${(props) => props.$isMobile ? PaddingOrMargin.extraLarge : PaddingOrMargin.extraLarge * 2}px 0px;
+    padding: ${(props) => props.$isMobile ? PaddingOrMargin.extraLarge : PaddingOrMargin.extraLarge}px 0px;
     color: ${theme.palette.text.secondary};
     flex-wrap: wrap;
+    gap: ${(props) => props.$isMobile ? '15px' : '0px'};
 `;
 
 const StyledActionButton = styled(ActionButton)`
@@ -67,5 +68,5 @@ const StyledActionButton = styled(ActionButton)`
 `;
 
 const Section = styled.div<{$isMobile: boolean}>`
-    min-height: ${(props) => props.$isMobile ? 30 : 60}vh;
+    min-height: ${(props) => props.$isMobile ? 30 : 50}vh;
 `;

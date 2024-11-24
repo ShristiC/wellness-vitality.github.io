@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { darkGreen, lightGreen, theme } from "./Core/Colors";
-import { BorderRadius } from "./Core/Layout";
+import { BorderRadius, PaddingOrMargin } from "./Core/Layout";
 import { HeadingTextLight } from "./Core/Typography";
 import { HyperlinkButton } from "./CoreButtons";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,7 @@ export default function TestimonialsFeatureComponent () {
 }
 
 const Wrapper = styled.div<{$isMobile: boolean}>`
-    min-height: ${(props) => props.$isMobile ? '60vh' : '60vh'};
+    min-height: ${(props) => props.$isMobile ? '20vh' : '20vh'};
     background: linear-gradient(0deg, ${lightGreen}, ${darkGreen});
     border-radius: ${BorderRadius.button}px;
     text-align: center;
@@ -39,6 +39,7 @@ const Wrapper = styled.div<{$isMobile: boolean}>`
     display: flex;
     align-items: center;
     padding: 5%;
+    gap: ${(props) => props.$isMobile ? PaddingOrMargin.medium : PaddingOrMargin.extraLarge}px;
 `;
 
 const Video = styled.iframe<{$isMobile: boolean}>`

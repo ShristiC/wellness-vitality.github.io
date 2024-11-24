@@ -43,6 +43,7 @@ const CoverImage = styled.img`
 
 const CenterContent = styled.div`
     position: relative;
+    top: -10%;
     width: 100%;
     height: 100%;
     display: flex;
@@ -50,6 +51,7 @@ const CenterContent = styled.div`
     align-items: center;
     justify-content: center;
     padding: ${PaddingOrMargin.medium}px;
+    gap: ${PaddingOrMargin.large}px;
 `;
 
 const BlurContent = styled.div`

@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 import { theme } from "./Colors";
 
 export const FontSizes = {
-    button: 16,
-    buttonSmall: 14,
-    coverTitle: 48,
+    button: 18,
+    buttonSmall: 16,
+    coverTitle: 52,
     heading: 24,
-    headingLarge: 40,
-    largeContent: 20,
+    headingLarge: 42,
+    largeContent: 16,
     default: 18,
     mobile: {
         button: 12,
@@ -31,6 +31,7 @@ export const Weights = {
 export const Title = styled.h1<{$isMobile: boolean}>`
     font-size: ${(props) => props.$isMobile ? `${FontSizes.mobile.coverTitle}px` : `${FontSizes.coverTitle}px`};
     font-weight: ${Weights.light};
+    letter-spacing: 6;
 `;
 
 export const HeadingText = styled.h2<{$color: 'primary' | 'secondary', $isMobile: boolean}>`
@@ -47,7 +48,7 @@ export const HeadingTextLight = styled.h2<{$color: 'primary' | 'secondary', $isM
 
 export const ContentTextBold = styled.p<{$isMobile: boolean}>`
     font-size: ${(props) => props.$isMobile ? `${FontSizes.mobile.default}px` : `${FontSizes.default}px`};
-    font-weight: ${Weights.regular};
+    font-weight: ${Weights.light};
 `;
 
 export const ContentText = styled(ContentTextBold)`

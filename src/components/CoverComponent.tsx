@@ -51,7 +51,7 @@ export const FixedTopWrapper = styled.div<{$isMobile: boolean, $coverHeight: num
 const CoverImage = styled.img<{$isMobile: boolean}>`
     width: 100%;
     height: 90%;
-    object-fit: ${(props) => props.$isMobile ? 'fit' : 'cover'};
+    object-fit: ${(props) => props.$isMobile ? 'fit' : 'fit'};
     transform: rotateY(180deg);
     filter: brightness(70%);
     position: absolute;
@@ -92,11 +92,11 @@ const BlurContent = styled.div`
 
 const CoverTitle = styled(Title)`
     color: ${theme.palette.getContrastText('default')};
-    text-shadow: 0 0 ${(props) => props.$isMobile ? 2 : 4}px ${theme.palette.text.primary};
+    text-shadow: 0 0 ${(props) => props.$isMobile ? 2 : 0}px ${theme.palette.text.primary};
 `;
 
 const OutlineTitle = styled(Title)`
-    -webkit-text-stroke-width: ${(props) => props.$isMobile ? '1px' : '4px'};
+    -webkit-text-stroke-width: ${(props) => props.$isMobile ? '1px' : '2px'};
     -webkit-text-stroke-color: ${theme.palette.text.secondary};
     color: transparent;
     text-shadow: none;
@@ -109,7 +109,7 @@ const CoverSubtitle = styled(ContentTextBold)`
 
 export const IconWrapper = styled.div<{$isMobile: boolean}>`
     position: absolute;
-    bottom: 15%;
+    bottom: 18%;
     left: 50%;
     transform: translateX(-50%);
 `;
