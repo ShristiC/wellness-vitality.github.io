@@ -23,6 +23,7 @@ import VegLasagna from "../../assets/gallery/Vegge lasagna.jpg";
 import VegTapioca from "../../assets/gallery/Vegges with Tapioca.jpg";
 import WatermelonJuice from "../../assets/gallery/Watermelon Chia Juice.jpg";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import { darkGreen } from "../Core/Colors";
 import { BorderRadius, PaddingOrMargin, Row } from "../Core/Layout";
 import { ContentText, DisclaimerText, Title } from "../Core/Typography";
 import Footer from "../Footer";
@@ -248,6 +249,10 @@ const GalleryItem = styled.img`
     width: 130px;
     height: 120px;
     object-fit: cover;
+    :hover {
+        cursor: pointer;
+        border: 2px solid ${darkGreen};
+    }
 `;
 
 const GalleryRow = styled(Row)`

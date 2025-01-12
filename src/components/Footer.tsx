@@ -101,6 +101,10 @@ const SocialsRow = styled(Row)<{$fontSize: number}>`
 
 const StyledAnchor = styled.a`
     color: #33691e;
+    :hover {
+        box-shadow: 0px 0px 5px 0px ${darkGreen};
+        border-radius: ${BorderRadius.button}px;
+    }
 `;
 
 const RoundedIcon = styled.img<{$size: number}>`

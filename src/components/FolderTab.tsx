@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import { ContentText } from "./Core/Typography";
-import useWindowDimensions from "../hooks/useWindowDimensions";
 import { useEffect, useState } from "react";
-import { BorderRadius, PaddingOrMargin, Row } from "./Core/Layout";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import { darkGreen, lightGreen, theme } from "./Core/Colors";
+import { BorderRadius, PaddingOrMargin, Row } from "./Core/Layout";
+import { ContentText } from "./Core/Typography";
 
 interface IFolderTab {
     labels: string[];
@@ -24,7 +24,6 @@ export default function FolderTab({labels, tab1Content, tab2Content}: IFolderTab
         }
 
     }, [isFirstTabClicked]);
-
 
     return (
         <Wrapper $isMobile={isMobile}>
@@ -65,6 +64,10 @@ const Tab = styled.div<{$isFirstTab: boolean}>`
     border-top-left-radius: ${BorderRadius.light}px;
     border-top-right-radius: ${BorderRadius.light}px;
     color: ${theme.palette.text.secondary};
+    :hover {
+        cursor: pointer;
+        background: linear-gradient(90deg, ${darkGreen}, ${lightGreen});
+    }
 `;
 
 const Content = styled.div<{$isFirstTab: boolean, $isMobile: boolean}>`
@@ -79,5 +82,11 @@ const Content = styled.div<{$isFirstTab: boolean, $isMobile: boolean}>`
     display: flex;
     flex-direction: column;
     gap: ${PaddingOrMargin.large}px;
-    height: ${(props) => props.$isMobile ? '65vh' : '70vh'};
+    // Let height adapt to content
+    overflow: hidden; // Prevent content from overflowing during animation
+    transition: height 1s smooth; // Smooth height transition
+
+    // Allow flexible resizing
+    width: 100%; // Or use a percentage of the viewport/container
+    box-sizing: border-box; // Ensure padding is included in the element’s total dimensions
 `;
