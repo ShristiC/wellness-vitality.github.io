@@ -6,6 +6,7 @@ export const offWhite = '#F8F2DD';
 export const white = '#FFFFFF';
 export const black = '#000000';
 export const gray = '#B6B8B9';
+export const darkGray = '#B6B9B9';
 
 export const theme = createTheme({
     palette: {

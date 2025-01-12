@@ -51,10 +51,10 @@ const Wrapper = styled.div<{$isMobile: boolean}>`
     position: relative;
     background-image: url(${CoachingImage});
     background-position: 60% ;
-    height: ${(props) => props.$isMobile ? 50 : 50}vh;
     background-size: cover;
     border-radius: ${BorderRadius.button}px;
     padding: 5%;
+    height: auto;
 `;
 
 const ContentWrapper = styled.div`
@@ -69,7 +69,8 @@ const BlurWrapper = styled.div`
     background-color: black;
     filter: opacity(0.5) blur(40px);
     border-radius: ${BorderRadius.button}px;
-    height: 400px;
+    min-height: 400px;
+    max-height: 100%;
 `;
 
 const StyledContentText = styled(ContentText)`

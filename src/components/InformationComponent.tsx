@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import FruitsImage from "../assets/raw_ingredients.png";
-import { theme } from "./Core/Colors";
-import { ContentText, HeadingTextLight } from "./Core/Typography";
-import { BorderRadius, PaddingOrMargin } from "./Core/Layout";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import { theme } from "./Core/Colors";
+import { BorderRadius, PaddingOrMargin } from "./Core/Layout";
+import { ContentText, HeadingTextLight } from "./Core/Typography";
 
 export default function InformationComponent () {
     const [_, isMobile] = useWindowDimensions();
@@ -21,7 +21,7 @@ export default function InformationComponent () {
 const Wrapper = styled.div<{$isMobile: boolean}>`
     position: relative;
     background-image: url(${FruitsImage});
-    height: ${(props) => props.$isMobile ? '30vh' : '50vh'};
+    min-height: ${(props) => props.$isMobile ? '30vh' : '50vh'};
     background-size: cover;
     border-radius: ${BorderRadius.button}px;
     margin-top: ${(props) => props.$isMobile ? '30px' : '300px'};

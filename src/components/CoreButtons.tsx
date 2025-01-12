@@ -16,11 +16,19 @@ export const ActionButton = styled(BaseButton) <{ $variant: 'default' | 'paper',
     color: ${(props) => theme.palette.getContrastText(props.$variant)};
     font-weight: ${(props) => props.$variant == 'default' ? Weights.regular : Weights.light};
     width: ${(props) => props.$isMobile ? '100%': 'fit-content'};
+    :hover {
+        background-color: ${(props) => theme.palette.background[props.$variant == 'default'? 'paper' : 'default']};
+        color: ${(props) => theme.palette.getContrastText(props.$variant == 'default' ? 'paper' : 'default')};
+        border: 1px solid ${(props) => theme.palette.background[props.$variant]};
+    }
 `;
 
 export const CoreButton = styled(BaseButton) <{$isMobile: boolean}>`
     font-size: ${(props) => props.$isMobile ? `${FontSizes.mobile.button}px` : `${FontSizes.button}px`};
     background-color: transparent;
+    :hover {
+        text-decoration: underline;
+    }
 `;
 
 type linkVariant = 'default' | 'testimonials';
@@ -35,4 +43,18 @@ export const HyperlinkButton = styled(BaseButton)<{$variant: 'default' | 'testim
     text-decoration: underline;
     background: transparent;
     color: ${(props) => linkColors[props.$variant]};
+    :hover {
+        text-decoration: none;
+    }
+`;
+
+export const StyledLink = styled.a`
+    text-decoration: underline;
+    color: ${theme.palette.text.primary};
+    :hover {
+        text-decoration: none;
+    }
+    :visited {
+        color: ${theme.palette.text.primary};
+    }
 `;

@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 import { theme } from "./Core/Colors";
 import { Row, TopLayer } from "./Core/Layout";
 import Logo from "./Logo";
 import NavigationBar from "./NavigationBar";
-import useWindowDimensions from "../hooks/useWindowDimensions";
 
 export default function Heading() {
     const [_, isMobile] = useWindowDimensions();
