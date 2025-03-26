@@ -6,6 +6,7 @@ export const FontSizes = {
     buttonSmall: 16,
     coverTitle: 52,
     heading: 24,
+    headingMedium: 30,
     headingLarge: 42,
     largeContent: 16,
     default: 18,
@@ -14,7 +15,8 @@ export const FontSizes = {
         buttonSmall: 10,
         coverTitle: 20,
         heading: 20,
-        headingLarge: 18,
+        headingMedium: 22,
+        headingLarge: 24,
         largeContent: 16,
         default: 12,
     }
@@ -42,6 +44,12 @@ export const HeadingText = styled.h2<{$color: 'primary' | 'secondary', $isMobile
 
 export const HeadingTextLight = styled.h2<{$color: 'primary' | 'secondary', $isMobile: boolean}>`
     font-size: ${(props) => props.$isMobile ? FontSizes.mobile.headingLarge : FontSizes.headingLarge}px;
+    font-weight: ${Weights.light};
+    color: ${(props) => theme.palette.text[props.$color]};
+`;
+
+export const CardHeading = styled.h3<{$color: 'primary' | 'secondary', $isMobile: boolean}>`
+    font-size: ${(props) => props.$isMobile ? FontSizes.mobile.headingMedium : FontSizes.headingMedium}px;
     font-weight: ${Weights.light};
     color: ${(props) => theme.palette.text[props.$color]};
 `;

@@ -16,6 +16,7 @@ export default function NavigationBar() {
         { name: 'Home', route: '/' },
         { name: 'About', route: '/about' },
         { name: 'Recipes', route: '/recipes' },
+        { name: 'Programs', route: '/programs' },
         { name: 'Testimonials', route: '/testimonials' },
         // { name: 'Contact', route: '/contact' },
     ];
