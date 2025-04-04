@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import CleanEatingPDF from "../../assets/programs/healthy eating.pdf";
 import CleanEatingPng from "../../assets/programs/healthyEating.png";
+import LiverPaloozaPDF from "../../assets/programs/Liverpalooza Flier.pdf";
+import LiverPaloozaPng from "../../assets/programs/Liverpalooza.png";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { darkGreen, white } from "../Core/Colors";
 import { BorderRadius, PaddingOrMargin } from "../Core/Layout";
@@ -26,9 +28,9 @@ export default function ProgramsPage() {
             description: "Online Cleanse for Better Metabolism, More Energy, and Lasting Vitality. No Supplements Required.",
             additionalInfo: "Registration Starts April 7th!",
             link: "https://l.bttr.to/EpSF0",
-            buttonText: "Coming Soon...",
-            imageSrc: "https://www.nlpfitness.ca/cdn/shop/articles/Smoked_Tofu_Vegan_Protein_Bowl_1.jpg?v=1519308465",
-            isDisabled: true,
+            buttonText: "Register Now",
+            imageSrc: LiverPaloozaPng,
+            onClick: () => window.open(LiverPaloozaPDF, "_blank", "noreferrer"),
         }, 
     ]
 
@@ -51,7 +53,6 @@ export default function ProgramsPage() {
                             <Wrapper>
                                 <ContentTextBold $isMobile={isMobile}>{p.additionalInfo}</ContentTextBold>
                                 <StyledActionButton
-                                    disabled={p.isDisabled}
                                     $variant="paper"
                                     $isMobile={isMobile}
                                     onClick={(e) => {
@@ -96,7 +97,7 @@ const Content = styled.div`
 const Card = styled.div`
     width: 200px;
     border: 2px solid ${white};
-    padding: ${PaddingOrMargin.large}px;
+    padding: ${PaddingOrMargin.small}px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
