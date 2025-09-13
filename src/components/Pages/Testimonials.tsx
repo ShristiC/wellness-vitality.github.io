@@ -4,6 +4,7 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { darkGray, gray } from "../Core/Colors";
 import { BorderRadius, PaddingOrMargin, Row } from "../Core/Layout";
 import { ContentText, ContentTextBold, DisclaimerText, HeadingText } from "../Core/Typography";
+import LazyVideo from "../Core/Video/LazyVideo";
 import Footer from "../Footer";
 import Heading from "../Heading";
 import TestimonialsCoverComponent from "../TestimonialsCoverComponents";
@@ -128,7 +129,7 @@ function TestimonialCard ({title, date, videoURL, onClick}: TestimonialCardProps
     const [_, isMobile] = useWindowDimensions();
     return (
         <Card role="button" onClick={onClick}>
-            <ThumbnailVideo $isMobile={isMobile} src={videoURL} title={title} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture;" />
+            <LazyVideo videoUrl={videoURL} title={title} />
             <CardContent>
                 <ContentText $isMobile={isMobile}>{title}</ContentText>
                 <Text $isMobile={isMobile}>{date}</Text>
