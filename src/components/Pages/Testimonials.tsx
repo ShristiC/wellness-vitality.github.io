@@ -15,12 +15,28 @@ export default function TestimonialsPage() {
 
     const testimonialVideos = [
         {
-            title: "How Wellness & Vitality helped my Arthritis",
-            description: "Meet Catherine, who regained her life back from Severe Pain due to Arthritis and High Inflammation.",
-            thumbnailTitle: "Catherine's Journey",
-            tag: "Arthritis & Inflammation",
-            videoUrl: "https://www.youtube.com/embed/iS0Z10eWd9o",
-            date: "August 2022"
+            title: "In 30 Days - I had Regular Bowel Movement after 20 years",
+            description: "Meet Cameron, who had acute constipation for 2 decades, acid reflux, knee pain, and brain fog. In a month, all of it has been reversed.",
+            thumbnailTitle: "Cameron's Journey",
+            tag: "Constipation, Acid Reflux & Knee Pain",
+            videoUrl: "https://www.youtube.com/embed/YzLEwxfVGQ4?si=rD0atdX03HAm2dDi",
+            date: "May 2025"
+        },
+        {
+            title: "I am Not Internalizing the Saddness in the World. I now have a Brighter Outlook in Life",
+            description: "Meet Suzan Dimon, who stopped taking allergy shots, reduced steroid sprays, stopped taking cholestorl medication, eliminated muscle scramps, and lost 15 pounds.",
+            thumbnailTitle: "Suzan's Journey",
+            tag: "Allergies, Cholesterol & Weight Loss",
+            videoUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2FWellnessnVitality%2Fvideos%2F3983651408538457%2F&show_text=false&width=476&t=0",
+            date: "April 2025"
+        },
+        {
+            title: "I lost 15lbs, and my Cholesterol Levels Reduced Significantly",
+            description: "Meet Amit, who learned how to manage his lifestyle and food, leading to life changes that felt so difficult before.",
+            thumbnailTitle: "Amit's Journey",
+            tag: "Cholesterol & Weight Loss",
+            videoUrl: "https://youtube.com/embed/52I-bTy2mMU?si=53sFFiZby-dZ1WFm",
+            date: "June 2024"
         },
         {
             title: "My 40 Day Report Card",
@@ -31,6 +47,14 @@ export default function TestimonialsPage() {
             date: "August 2023"
         },
         {
+            title: "I Reveresed my Type II Diabetes",
+            description: "Meet Sonal, who reversed her Type II Diabetes within weeks.",
+            thumbnailTitle: "Sonal's Story",
+            tag: "Type II Diabetes",
+            videoUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2FWellnessnVitality%2Fvideos%2F309632591752273%2F&show_text=false&width=476&t=0",
+            date: "January 2025"
+        },
+        {
             title: "15 days - My Migrane Pain Went Away",
             description: "For 18 years, Shyam was struggling with severe migrane pains. Within 15 days, his migrane is gone and his sugar levels went down by 132 points.",
             thumbnailTitle: "Shyam's Journey",
@@ -39,12 +63,12 @@ export default function TestimonialsPage() {
             date: "April 2023"
         },
         {
-            title: "I Reveresed my Type II Diabetes",
-            description: "Meet Sonal, who reversed her Type II Diabetes within weeks.",
-            thumbnailTitle: "Sonal's Story",
-            tag: "Type II Diabetes",
-            videoUrl: "https://www.youtube.com/embed/Dr972vQslCo",
-            date: "July 2023"
+            title: "How Wellness & Vitality helped my Arthritis",
+            description: "Meet Catherine, who regained her life back from Severe Pain due to Arthritis and High Inflammation.",
+            thumbnailTitle: "Catherine's Journey",
+            tag: "Arthritis & Inflammation",
+            videoUrl: "https://www.youtube.com/embed/iS0Z10eWd9o",
+            date: "August 2022"
         },
         {
             title: "How Wellness & Vitality regained my Self-Confidence",
@@ -53,7 +77,7 @@ export default function TestimonialsPage() {
             tag: "Weight Loss",
             videoUrl: "https://www.youtube.com/embed/ZwkWNf4cI_c",
             date: "March 2022"
-        }
+        },
     ];
 
     const setTestimonial = (index: number) => {

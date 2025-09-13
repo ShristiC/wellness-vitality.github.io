@@ -26,6 +26,18 @@ export default function WrittenTestimonials () {
 
     const testimonialsCol1: TestimonialItem[] = [
         {
+            title: "Week 1 Progresss Report: Reduced Blood Pressure",
+            description: "117/87 BP has come down. It has not been this low with medication. Pulse is at 100 usually. Today it's at 80. Magic has started to begin. All thanks to you!",
+            imageUrl: "",
+            name: "Practicing Member",
+        },
+        {
+            title: "I avoided Surgery and Improved Strength",
+            description: "Hi Auntie, just wanted to update you on my progress lately, I was doing PT and ended doing some more exercise and did some push-ups at the end to test out if I can still do them or not. Before I used to feel pain around 3-5 push-ups but now I am able to get about 15-20 pushups in one go without feeling much pain. Thank you very much! Saved me from surgery so far and I really appreciate it!",
+            imageUrl: "",
+            name: "Arjun - 19 years old"
+        },
+        {
             title: "Reduced Insulin Medication and Low H1AC",
             description: "The number speaks more than words. When your H1Ac is down to 5.8 and medicine is cut down to half, then you cannot find the right sentence to share your experience except the \"wow, it can be done!\" Well done Anita, you breathed new life in me. Thanks for your inspiration.",
             imageUrl: Dev,
