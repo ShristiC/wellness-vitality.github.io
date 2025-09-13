@@ -225,11 +225,6 @@ const Card = styled(Row)`
     }
 `;
 
-const ThumbnailVideo = styled.iframe<{$isMobile: boolean}>`
-    border-radius: ${BorderRadius.button}px;
-    width: ${(props) => props.$isMobile ? 150 : 200}px;
-`;
-
 const CardContent = styled.div`
     gap: 5px;
     align-self: center;
