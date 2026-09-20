@@ -7,8 +7,10 @@ import { ContentText, ContentTextBold, DisclaimerText, HeadingText } from "../Co
 import LazyVideo from "../Core/Video/LazyVideo";
 import Footer from "../Footer";
 import Heading from "../Heading";
+import Seo from "../Seo";
 import TestimonialsCoverComponent from "../TestimonialsCoverComponents";
 import WrittenTestimonials from "../WrittenTestimonials";
+import { breadcrumbSchema, videoSchema } from "../../seo/schema";
 
 export default function TestimonialsPage() {
     const [currIndex, setCurrIndex] = useState(0);
@@ -126,6 +128,15 @@ export default function TestimonialsPage() {
     }
     return (
         <>
+            <Seo
+                title="Client Success Stories & Testimonials — Wellness n Vitality"
+                description="Real client transformations: reversing Type II Diabetes, easing chronic pain and migraines, weight loss, and better gut health through functional medicine coaching with Wellness n Vitality."
+                path="/testimonials"
+                jsonLd={[
+                    ...testimonialVideos.map((v) => videoSchema(v)),
+                    breadcrumbSchema([["Home", "/"], ["Testimonials", "/testimonials"]]),
+                ]}
+            />
             <Heading />
             <TestimonialsCoverComponent />
             <VideoTestimonials $isMobile={isMobile}>

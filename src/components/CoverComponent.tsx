@@ -19,10 +19,9 @@ export default function CoverComponent() {
             <BlurContent />
             <CenterContent>
                 <InnerContent $isMobile={isCompact}>
-                    <div>
-                        <CoverTitle $isMobile={isCompact}>Let's take charge</CoverTitle>
-                        <CoverTitle $isMobile={isCompact}>of<OutlineTitle as="span" $isMobile={isCompact}> OUR </OutlineTitle> lives</CoverTitle>
-                    </div>
+                    <CoverTitle $isMobile={isCompact}>
+                        Let's take charge<br />of<OutlineTitle as="span" $isMobile={isCompact}> OUR </OutlineTitle> lives
+                    </CoverTitle>
                     <CoverSubtitle $isMobile={isCompact}>1-1 Functional Nutrition Coaching</CoverSubtitle>
                     <ActionButton $variant='paper' $isMobile={isCompact} style={{marginBottom: `${isMobile ? '5px' : '0px'}`, zIndex: '1'}} onClick={(e) => {
                         e.preventDefault();

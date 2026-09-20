@@ -28,7 +28,9 @@ import { BorderRadius, PaddingOrMargin, Row } from "../Core/Layout";
 import { ContentText, DisclaimerText, Title } from "../Core/Typography";
 import Footer from "../Footer";
 import Heading from "../Heading";
+import Seo from "../Seo";
 import TestimonialsFeatureComponent from "../TestimonialsFeatureComponent";
+import { breadcrumbSchema, collectionSchema } from "../../seo/schema";
 
 export default function RecipesPage() {
     const [_, isMobile] = useWindowDimensions();
@@ -175,6 +177,19 @@ export default function RecipesPage() {
     
     return (
         <>
+            <Seo
+                title="Healthy Recipe Gallery | Gluten-Free & Dairy-Free — Wellness n Vitality"
+                description="Browse a gallery of nourishing gluten-free and dairy-free recipes — from vegetarian Indian dishes to smoothies and grain bowls — showing that healthy eating doesn't have to be bland."
+                path="/recipes"
+                jsonLd={[
+                    collectionSchema(
+                        "Healthy Recipe Gallery",
+                        "A gallery of gluten-free and dairy-free recipes from Wellness n Vitality.",
+                        "/recipes",
+                    ),
+                    breadcrumbSchema([["Home", "/"], ["Recipes", "/recipes"]]),
+                ]}
+            />
             <Heading />
             <Content>
                 <InnerContent>

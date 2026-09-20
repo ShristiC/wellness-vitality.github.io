@@ -10,6 +10,8 @@ import { CardHeading, ContentText, ContentTextBold, Title } from "../Core/Typogr
 import { ActionButton } from "../CoreButtons";
 import Footer from "../Footer";
 import Heading from "../Heading";
+import Seo from "../Seo";
+import { breadcrumbSchema, eventSchema } from "../../seo/schema";
 
 
 export default function ProgramsPage() {
@@ -38,6 +40,15 @@ export default function ProgramsPage() {
 
     return (
         <>
+        <Seo
+            title="Programs & Workshops | Cleanses and Clean Eating — Wellness n Vitality"
+            description="Join Wellness n Vitality programs and workshops — from Clean Eating for Energy to the Spring Liver Cleanse — designed for better metabolism, more energy, and lasting vitality."
+            path="/programs"
+            jsonLd={[
+                ...programs.map((p) => eventSchema(p)),
+                breadcrumbSchema([["Home", "/"], ["Programs", "/programs"]]),
+            ]}
+        />
         <Heading />
         <Content>
             <Title $isMobile={isMobile}>Programs</Title>
