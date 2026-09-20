@@ -141,7 +141,7 @@ function WrittenTestimonial({testimonial, id}: InnerWrittenContentProps) {
 
     return (
         <Card key={id}>
-            <img src={QuoteIcon} width={isMobile ? 20 : 40} alt=""/>
+            <img src={QuoteIcon} width={isMobile ? 20 : 40} alt="user-icon"/>
             <CardWrapper $isMobile={isMobile}>
                 {isMobile && <InnerContent>
                     <TestimonialImage src={testimonial.imageUrl ? testimonial.imageUrl : Anonymous} width={150} height={150} alt={testimonial.alt}/>

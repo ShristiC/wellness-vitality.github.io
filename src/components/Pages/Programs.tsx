@@ -119,10 +119,9 @@ const Card = styled.div`
 const CoverImage = styled.img`
     object-fit: cover;
     width: 100%;
-    height: 100%;
-    max-height: 66.67%; /* Set max height to 2/3 of the available container */
+    aspect-ratio: 3 / 4; /* Reserve space up front (flyers are ~3:4) to avoid layout shift */
+    height: auto;
     cursor: pointer;
-    flex: 1 1 auto; /* Allow the image to grow and fill the space */
     border-color: ${white};
     background-color: ${white};
 `;
