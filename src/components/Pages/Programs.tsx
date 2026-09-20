@@ -10,6 +10,8 @@ import { CardHeading, ContentText, ContentTextBold, Title } from "../Core/Typogr
 import { ActionButton } from "../CoreButtons";
 import Footer from "../Footer";
 import Heading from "../Heading";
+import Seo from "../Seo";
+import { breadcrumbSchema, eventSchema } from "../../seo/schema";
 
 
 export default function ProgramsPage() {
@@ -38,6 +40,15 @@ export default function ProgramsPage() {
 
     return (
         <>
+        <Seo
+            title="Programs & Workshops | Cleanses and Clean Eating — Wellness n Vitality"
+            description="Join Wellness n Vitality programs and workshops — from Clean Eating for Energy to the Spring Liver Cleanse — designed for better metabolism, more energy, and lasting vitality."
+            path="/programs"
+            jsonLd={[
+                ...programs.map((p) => eventSchema(p)),
+                breadcrumbSchema([["Home", "/"], ["Programs", "/programs"]]),
+            ]}
+        />
         <Heading />
         <Content>
             <Title $isMobile={isMobile}>Programs</Title>
@@ -108,10 +119,9 @@ const Card = styled.div`
 const CoverImage = styled.img`
     object-fit: cover;
     width: 100%;
-    height: 100%;
-    max-height: 66.67%; /* Set max height to 2/3 of the available container */
+    aspect-ratio: 3 / 4; /* Reserve space up front (flyers are ~3:4) to avoid layout shift */
+    height: auto;
     cursor: pointer;
-    flex: 1 1 auto; /* Allow the image to grow and fill the space */
     border-color: ${white};
     background-color: ${white};
 `;

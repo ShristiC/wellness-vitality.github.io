@@ -9,6 +9,8 @@ import FolderTab from "../FolderTab";
 import Footer from "../Footer";
 import Heading from "../Heading";
 import Qualifications from "../Qualifications";
+import Seo from "../Seo";
+import { breadcrumbSchema, founderSchema } from "../../seo/schema";
 
 export default function AboutPage() {
     const [_, isMobile, isMedium] = useWindowDimensions();
@@ -49,6 +51,15 @@ export default function AboutPage() {
  }
     return (
         <>
+            <Seo
+                title="About Anita Chitlangia | Functional Medicine Coach — Wellness n Vitality"
+                description="Meet Anita Chitlangia, Certified Functional Medicine Health & Wellness Coach with 6+ years of experience helping 50+ clients worldwide reverse chronic conditions through root-cause, holistic care in English, Spanish, Hindi, and Bengali."
+                path="/about"
+                jsonLd={[
+                    founderSchema(),
+                    breadcrumbSchema([["Home", "/"], ["About", "/about"]]),
+                ]}
+            />
             <Heading />
             <Content>
                 <InnerContent>
