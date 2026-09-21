@@ -156,6 +156,7 @@ interface EventInput {
   description: string
   additionalInfo: string
   link: string
+  date: Date
 }
 
 /** Event schema for a program/workshop listing. */
@@ -165,7 +166,9 @@ export function eventSchema(event: EventInput) {
     '@type': 'Event',
     name: event.title,
     description: `${event.description} ${event.additionalInfo}`.trim(),
+    startDate: event.date.toISOString(),
     eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
     organizer: { '@id': `${SITE_URL}/#business` },
     url: event.link,
     offers: {

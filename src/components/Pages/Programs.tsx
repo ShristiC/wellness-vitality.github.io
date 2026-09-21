@@ -6,7 +6,7 @@ import LiverPaloozaPng from "../../assets/programs/Liverpalooza.png";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { darkGreen, white } from "../Core/Colors";
 import { BorderRadius, PaddingOrMargin } from "../Core/Layout";
-import { CardHeading, ContentText, ContentTextBold, Title } from "../Core/Typography";
+import { CardHeading, ContentText, ContentTextBold, FontSizes, Title } from "../Core/Typography";
 import { ActionButton } from "../CoreButtons";
 import Footer from "../Footer";
 import Heading from "../Heading";
@@ -19,24 +19,35 @@ export default function ProgramsPage() {
         {
             title: "Clean Eating for Energy",
             description: "Why are we getting so sick? It's the environment where we live, the food we eat, and the air we breathe full of toxins and pesticides.",
-            additionalInfo: "South Regional Library: April 8, 2025 at 1PM",
+            additionalInfo: "South Regional Library",
             link: "https://montgomeryco-southregional-tx.whofi.com/calendar/event/1269208/s?method=embed",
             buttonText: "Register Now",
             imageSrc: CleanEatingPng,
-            onClick: () => window.open(CleanEatingPDF, "_blank", "noreferrer")
+            onClick: () => window.open(CleanEatingPDF, "_blank", "noreferrer"),
+            date: new Date("2025-04-08T13:00:00"),
         },
         {
             title: "Spring Liver Cleanse 2025",
             description: "Online Cleanse for Better Metabolism, More Energy, and Lasting Vitality. No Supplements Required.",
-            additionalInfo: "Registration Starts April 7th!",
+            additionalInfo: "Remote",
             link: "https://l.bttr.to/EpSF0",
             buttonText: "Register Now",
             imageSrc: LiverPaloozaPng,
             onClick: () => window.open(LiverPaloozaPDF, "_blank", "noreferrer"),
+            date: new Date("2025-04-07T00:00:00"),
         }, 
     ]
 
     const [, isMobile] = useWindowDimensions();
+
+    const now = new Date();
+
+    const formatDate = (date: Date) =>
+        date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        });
 
     return (
         <>
@@ -45,7 +56,7 @@ export default function ProgramsPage() {
             description="Join Wellness n Vitality programs and workshops — from Clean Eating for Energy to the Spring Liver Cleanse — designed for better metabolism, more energy, and lasting vitality."
             path="/programs"
             jsonLd={[
-                ...programs.map((p) => eventSchema(p)),
+                ...programs.filter((p) => p.date >= now).map((p) => eventSchema(p)),
                 breadcrumbSchema([["Home", "/"], ["Programs", "/programs"]]),
             ]}
         />
@@ -53,30 +64,41 @@ export default function ProgramsPage() {
         <Content>
             <Title $isMobile={isMobile}>Programs</Title>
             <GridWrapper>
-                {programs.map((p) => (
+                {programs.map((p) => {
+                    const isPast = p.date < now;
+                    return (
                     <Card key={p.title}>
-                        <CoverImage src={p.imageSrc} alt={p.title} onClick={p.onClick}/>
+                        <CoverImage
+                            src={p.imageSrc}
+                            alt={p.title}
+                            onClick={isPast ? undefined : p.onClick}
+                            $isPast={isPast}
+                        />
                         <InnerContent>
                             <CardHeading $color="secondary" $isMobile={isMobile}>
                                 {p.title}
                             </CardHeading>
                             <ContentText $isMobile={isMobile}>{p.description}</ContentText>
                             <Wrapper>
-                                <ContentTextBold $isMobile={isMobile}>{p.additionalInfo}</ContentTextBold>
-                                <StyledActionButton
-                                    $variant="paper"
-                                    $isMobile={isMobile}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        window.open(p.link, "_blank", "noreferrer");
-                                    }}
-                                >
-                                    {p.buttonText}
-                                </StyledActionButton>
+                                <MetaText $isMobile={isMobile}>{formatDate(p.date)}</MetaText>
+                                <MetaText $isMobile={isMobile}>{p.additionalInfo}</MetaText>
+                                {!isPast && (
+                                    <StyledActionButton
+                                        $variant="paper"
+                                        $isMobile={isMobile}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            window.open(p.link, "_blank", "noreferrer");
+                                        }}
+                                    >
+                                        {p.buttonText}
+                                    </StyledActionButton>
+                                )}
                             </Wrapper>
                         </InnerContent>
                     </Card>
-                ))}
+                    );
+                })}
             </GridWrapper>
         </Content>
         <Footer />
@@ -116,12 +138,12 @@ const Card = styled.div`
     background-color: ${darkGreen};
 `;
 
-const CoverImage = styled.img`
+const CoverImage = styled.img<{ $isPast?: boolean }>`
     object-fit: cover;
     width: 100%;
     aspect-ratio: 3 / 4; /* Reserve space up front (flyers are ~3:4) to avoid layout shift */
     height: auto;
-    cursor: pointer;
+    cursor: ${(props) => (props.$isPast ? "default" : "pointer")};
     border-color: ${white};
     background-color: ${white};
 `;
@@ -148,4 +170,8 @@ const Wrapper = styled.div`
 
 const StyledActionButton = styled(ActionButton)`
     width: 100%;
+`;
+
+const MetaText = styled(ContentTextBold)`
+    font-size: ${(props) => props.$isMobile ? FontSizes.mobile.buttonSmall : FontSizes.buttonSmall}px;
 `;
