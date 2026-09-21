@@ -3,11 +3,11 @@ import { theme } from "./Colors";
 
 export const FontSizes = {
     button: 18,
-    buttonSmall: 16,
-    coverTitle: 52,
-    heading: 24,
-    headingMedium: 30,
-    headingLarge: 42,
+    buttonSmall: 12,
+    coverTitle: 48,
+    heading: 20,
+    headingMedium: 28,
+    headingLarge: 38,
     largeContent: 16,
     default: 18,
     mobile: {
