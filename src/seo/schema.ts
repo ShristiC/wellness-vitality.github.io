@@ -154,23 +154,37 @@ export function breadcrumbSchema(crumbs: Array<[string, string]>) {
 interface EventInput {
   title: string
   description: string
-  additionalInfo: string
-  link: string
+  location: string
+  link?: string
+  date: Date
 }
 
 /** Event schema for a program/workshop listing. */
 export function eventSchema(event: EventInput) {
+  // Treat "Remote"/"Online" locations as virtual; everything else is a
+  // physical venue. Google requires a `location` on every Event.
+  const isOnline = /\b(remote|online|virtual)\b/i.test(event.location)
+  const attendanceMode = isOnline
+    ? 'https://schema.org/OnlineEventAttendanceMode'
+    : 'https://schema.org/OfflineEventAttendanceMode'
+  const location = isOnline
+    ? { '@type': 'VirtualLocation', ...(event.link ? { url: event.link } : {}) }
+    : { '@type': 'Place', name: event.location, address: event.location }
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Event',
     name: event.title,
-    description: `${event.description} ${event.additionalInfo}`.trim(),
-    eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+    description: `${event.description} ${event.location}`.trim(),
+    startDate: event.date.toISOString(),
+    eventAttendanceMode: attendanceMode,
+    eventStatus: 'https://schema.org/EventScheduled',
+    location,
     organizer: { '@id': `${SITE_URL}/#business` },
-    url: event.link,
+    ...(event.link ? { url: event.link } : {}),
     offers: {
       '@type': 'Offer',
-      url: event.link,
+      ...(event.link ? { url: event.link } : {}),
       availability: 'https://schema.org/InStock',
     },
   }

@@ -18,7 +18,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(__dirname, '../dist')
 
 // Keep this list in sync with the routes in src/App.tsx and public/sitemap.xml.
-const routes = ['/', '/about', '/recipes', '/programs', '/testimonials']
+const routes = ['/', '/about', '/gallery', '/programs', '/testimonials']
 
 async function run() {
   const server = await preview({ preview: { port: 4173, strictPort: true } })

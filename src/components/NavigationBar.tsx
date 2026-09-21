@@ -15,7 +15,7 @@ export default function NavigationBar() {
     const navigationItems: INavigationItem[] = [
         { name: 'Home', route: '/' },
         { name: 'About', route: '/about' },
-        { name: 'Recipes', route: '/recipes' },
+        { name: 'Gallery', route: '/gallery' },
         { name: 'Programs', route: '/programs' },
         { name: 'Testimonials', route: '/testimonials' },
         // { name: 'Contact', route: '/contact' },

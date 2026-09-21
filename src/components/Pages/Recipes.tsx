@@ -180,14 +180,14 @@ export default function RecipesPage() {
             <Seo
                 title="Healthy Recipe Gallery | Gluten-Free & Dairy-Free — Wellness n Vitality"
                 description="Browse a gallery of nourishing gluten-free and dairy-free recipes — from vegetarian Indian dishes to smoothies and grain bowls — showing that healthy eating doesn't have to be bland."
-                path="/recipes"
+                path="/gallery"
                 jsonLd={[
                     collectionSchema(
                         "Healthy Recipe Gallery",
                         "A gallery of gluten-free and dairy-free recipes from Wellness n Vitality.",
-                        "/recipes",
+                        "/gallery",
                     ),
-                    breadcrumbSchema([["Home", "/"], ["Recipes", "/recipes"]]),
+                    breadcrumbSchema([["Home", "/"], ["Gallery", "/gallery"]]),
                 ]}
             />
             <Heading />
