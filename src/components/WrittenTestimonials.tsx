@@ -63,12 +63,6 @@ export default function WrittenTestimonials () {
             imageUrl: "",
             name: "Kunjan",
         },
-        {
-            title: "Addressing Chronic Symptoms of Diabetes",
-            description: "Anita ji has been working with my mother for her chronic diabetes. Her wholistic approach as a health coach is truly remarkable. The overall improvement in my mother’s health is clearly visible. Thank you💐",
-            imageUrl: "",
-            name: "Vikram",
-        },
     ];
 
     const testimonialsCol2: TestimonialItem[] = [
@@ -103,6 +97,12 @@ export default function WrittenTestimonials () {
             description: "I would like to thank you to Anita ji, connecting with her was my best decision and like God grace. Post severe Covid19 there was lots of ups and downs in my medical test reports. Even after seven months post covid, I was struggling for improvement and there was not much improvements. With continuous guidance with Anita ji , in short span of time I come back to normal without consuming lots of medicines. My last reports were all normal . With her help my and my family life style also totally changed. Highly recommended",
             imageUrl: "",
             name: "Sandeep",
+        },
+        {
+            title: "Addressing Chronic Symptoms of Diabetes",
+            description: "Anita ji has been working with my mother for her chronic diabetes. Her wholistic approach as a health coach is truly remarkable. The overall improvement in my mother’s health is clearly visible. Thank you💐",
+            imageUrl: "",
+            name: "Vikram",
         },
     ];
 

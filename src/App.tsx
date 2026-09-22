@@ -5,6 +5,7 @@ import AboutPage from "./components/Pages/About";
 import HomePage from "./components/Pages/Home";
 import RecipesPage from "./components/Pages/Recipes";
 import TestimonialsPage from "./components/Pages/Testimonials";
+import TestimonialsGalleryPage from "./components/Pages/TestimonialsGallery";
 import ProgramsPage from "./components/Pages/Programs";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/about' element={<AboutPage />} />
           <Route path='/gallery' element={<RecipesPage />} />
           <Route path='/testimonials' element={<TestimonialsPage />} />
+          <Route path='/testimonials/gallery' element={<TestimonialsGalleryPage />} />
           <Route path='/programs' element={<ProgramsPage   />} />
           {/* <Route path='/contact' element={<ContactPage />}/> */}
         </Routes>
