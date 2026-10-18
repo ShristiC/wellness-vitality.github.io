@@ -12,7 +12,7 @@ export default function Qualifications() {
     const [_, isMobile] = useWindowDimensions();
     const quals = [
         {
-            names: ["Certified Functional Nutrion and Lifestyle Practitioner", "Certified Functional Nutrition Counselor"],
+            names: ["Certified Functional Nutrition and Lifestyle Practitioner", "Certified Functional Nutrition Counselor"],
             links: ["https://www.fxnutrition.com/programs/functional-nutrition-and-lifestyle-practitioner-certification-fnlp", "https://www.fxnutrition.com/programs/full-body-systems"],
             imgUrl: FNA,
             alt: "Functional Nutritional Alliance Logo",

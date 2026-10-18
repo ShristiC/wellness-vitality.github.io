@@ -2,7 +2,7 @@
 //
 // JSON-LD structured-data builders and shared site constants. These teach
 // search engines and AI/LLM crawlers what this site is: a remote-first
-// functional-medicine health-coaching practice. We intentionally model the
+// functional-medicine nutrition and health-coaching practice. We intentionally model the
 // business as HealthAndBeautyBusiness (a LocalBusiness subtype) rather than
 // MedicalBusiness — the practice does behavioral coaching and explicitly does
 // NOT diagnose, treat, or prescribe (see the disclaimer in Footer.tsx).
@@ -13,8 +13,8 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`
 
 export const BUSINESS_DESCRIPTION =
   'Wellness n Vitality is a remote-first Nutritional and Holistic Functional ' +
-  'Medicine Health Coaching practice. Founder and lead coach Anita Chitlangia ' +
-  'helps clients worldwide mitigate symptoms of chronic conditions — Type II ' +
+  'Medicine practice. Founder Anita Chitlangia, a Functional Medicine ' +
+  'Nutritionist and Certified Health & Wellness Coach, helps clients worldwide mitigate symptoms of chronic conditions — Type II ' +
   'Diabetes, chronic pain and fatigue, weight management, and IBS / gut health ' +
   '— through sustainable lifestyle and behavioral change.'
 
@@ -30,10 +30,24 @@ export const BOOKING_URL =
 
 const LANGUAGES = ['English', 'Spanish', 'Hindi', 'Bengali']
 
+// Primary title first; the coaching certification is listed as a secondary title.
+const JOB_TITLES = [
+  'Functional Medicine Nutritionist',
+  'Certified Functional Medicine Health & Wellness Coach',
+]
+
+// Mirrors the certifications shown in Qualifications.tsx: [name, issuer, issuer URL].
+const CREDENTIALS: Array<[string, string, string]> = [
+  ['Certified Functional Nutrition and Lifestyle Practitioner', 'Functional Nutrition Alliance', 'https://www.fxnutrition.com/'],
+  ['Certified Functional Nutrition Counselor', 'Functional Nutrition Alliance', 'https://www.fxnutrition.com/'],
+  ['National Board Certified Health and Wellness Coach', 'National Board for Health & Wellness Coaching', 'https://nbhwc.org/'],
+  ['Certified Functional Medicine Health and Wellness Coach', 'Functional Medicine Coaching Academy', 'https://functionalmedicinecoaching.org/'],
+]
+
 const FOUNDER = {
   '@type': 'Person',
   name: 'Anita Chitlangia',
-  jobTitle: 'Certified Functional Medicine Health & Wellness Coach',
+  jobTitle: JOB_TITLES,
   knowsLanguage: LANGUAGES,
 }
 
@@ -96,7 +110,10 @@ export function serviceSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType: 'Functional Medicine Health & Wellness Coaching',
+    serviceType: [
+      'Functional Medicine Nutrition',
+      'Functional Medicine Health & Wellness Coaching',
+    ],
     provider: { '@id': `${SITE_URL}/#business` },
     areaServed: { '@type': 'Place', name: 'Worldwide' },
     description:
@@ -119,20 +136,22 @@ export function founderSchema() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Anita Chitlangia',
-    jobTitle: 'Certified Functional Medicine Health & Wellness Coach',
+    jobTitle: JOB_TITLES,
     description:
-      'Founder of Wellness n Vitality and a Certified Functional Medicine ' +
-      'Health & Wellness Coach with 6+ years of experience helping 50+ clients ' +
+      'Founder of Wellness n Vitality, a Functional Medicine Nutritionist, and ' +
+      'a Certified Functional Medicine Health & Wellness Coach, certified in ' +
+      'functional nutrition by the Functional Nutrition Alliance, with 6+ years of experience helping 50+ clients ' +
       'worldwide address the root causes of chronic conditions.',
     url: `${SITE_URL}/about`,
     image: DEFAULT_OG_IMAGE,
     knowsLanguage: LANGUAGES,
     worksFor: { '@id': `${SITE_URL}/#business` },
-    hasCredential: {
+    hasCredential: CREDENTIALS.map(([name, org, url]) => ({
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'certification',
-      name: 'Certified Functional Medicine Health & Wellness Coach',
-    },
+      name,
+      recognizedBy: { '@type': 'Organization', name: org, url },
+    })),
     sameAs: SOCIAL_PROFILES,
   }
 }
