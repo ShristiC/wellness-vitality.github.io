@@ -39,13 +39,13 @@ export default function AboutPage() {
                 {isMobile ? 
                     <div style={{textAlign: 'center', marginTop: `${PaddingOrMargin.large}px`}}>
                         <ContentTextBold $isMobile={isMobile}>Anita Chitlangia</ContentTextBold>
-                        <ContentText $isMobile={isMobile}>Functional Medicine Nutritionist</ContentText>
+                        <ContentText $isMobile={isMobile}>Functional Medicine Nutrition Counselor</ContentText>
                         <SubtitleText $isMobile={isMobile}>Certified Health &amp; Wellness Coach</SubtitleText>
                         <ContentText $isMobile={isMobile}>Founder of Wellness n Vitality</ContentText>
                     </div> : 
                     <ProfessionContentText>
                         <ContentTextBold $isMobile={isMobile}>Anita Chitlangia</ContentTextBold>
-                        <ContentText $isMobile={isMobile}>Functional Medicine Nutritionist</ContentText>
+                        <ContentText $isMobile={isMobile}>Functional Medicine Nutrition Counselor</ContentText>
                         <SubtitleText $isMobile={isMobile}>Certified Health &amp; Wellness Coach</SubtitleText>
                         <ContentText $isMobile={isMobile}>Founder of Wellness n Vitality</ContentText>
                     </ProfessionContentText>
@@ -56,8 +56,8 @@ export default function AboutPage() {
     return (
         <>
             <Seo
-                title="About Anita Chitlangia | Functional Medicine Nutritionist & Health Coach — Wellness n Vitality"
-                description="Meet Anita Chitlangia, Functional Medicine Nutritionist and Certified Functional Medicine Health & Wellness Coach with 6+ years of experience helping 50+ clients worldwide reverse chronic conditions through root-cause, holistic care in English, Spanish, Hindi, and Bengali."
+                title="About Anita Chitlangia | Functional Medicine Nutrition Counselor & Health Coach — Wellness n Vitality"
+                description="Meet Anita Chitlangia, Functional Medicine Nutrition Counselor and Certified Functional Medicine Health & Wellness Coach with 6+ years of experience helping 50+ clients worldwide reverse chronic conditions through root-cause, holistic care in English, Spanish, Hindi, and Bengali."
                 path="/about"
                 jsonLd={[
                     founderSchema(),
