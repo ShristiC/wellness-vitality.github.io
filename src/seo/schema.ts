@@ -14,7 +14,8 @@ export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`
 export const BUSINESS_DESCRIPTION =
   'Wellness n Vitality is a remote-first Nutritional and Holistic Functional ' +
   'Medicine practice. Founder Anita Chitlangia, a Functional Medicine ' +
-  'Nutritionist and Certified Health & Wellness Coach, helps clients worldwide mitigate symptoms of chronic conditions — Type II ' +
+  'Nutrition Counselor and Certified Health & Wellness Coach, helps clients ' +
+  'worldwide mitigate symptoms of chronic conditions — Type II ' +
   'Diabetes, chronic pain and fatigue, weight management, and IBS / gut health ' +
   '— through sustainable lifestyle and behavioral change.'
 
@@ -32,7 +33,7 @@ const LANGUAGES = ['English', 'Spanish', 'Hindi', 'Bengali']
 
 // Primary title first; the coaching certification is listed as a secondary title.
 const JOB_TITLES = [
-  'Functional Medicine Nutritionist',
+  'Functional Medicine Nutrition Counselor',
   'Certified Functional Medicine Health & Wellness Coach',
 ]
 
@@ -138,7 +139,7 @@ export function founderSchema() {
     name: 'Anita Chitlangia',
     jobTitle: JOB_TITLES,
     description:
-      'Founder of Wellness n Vitality, a Functional Medicine Nutritionist, and ' +
+      'Founder of Wellness n Vitality, a Functional Medicine Nutrition Counselor, and ' +
       'a Certified Functional Medicine Health & Wellness Coach, certified in ' +
       'functional nutrition by the Functional Nutrition Alliance, with 6+ years of experience helping 50+ clients ' +
       'worldwide address the root causes of chronic conditions.',
