@@ -10,11 +10,11 @@ function getWindowDimensions(): WindowDimensions {
 }
 
 function isMobileDimensions(dimensions: WindowDimensions): boolean {
-    return dimensions.width <= 450;
+    return dimensions.width <= 768;
 }
 
 function isMediumWidth(dimensions: WindowDimensions): boolean {
-    return dimensions.width > 450 && dimensions.width < 1100;
+    return dimensions.width > 768 && dimensions.width < 1100;
 }
 
 export default function useWindowDimensions(): [WindowDimensions, boolean, boolean] {
@@ -27,7 +27,7 @@ export default function useWindowDimensions(): [WindowDimensions, boolean, boole
         const dimensions = getWindowDimensions();
         setWindowDimensions(dimensions);
         setIsMobile(isMobileDimensions(dimensions));
-        setIsMedium(isMediumWidth(windowDimensions));
+        setIsMedium(isMediumWidth(dimensions));
     }
 
     window.addEventListener('resize', handleResize);
