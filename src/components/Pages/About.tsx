@@ -34,22 +34,14 @@ export default function AboutPage() {
             dimension = 'compact';
         }
         return (
-            <ProfessionalContent $isMobile={isMobile}>
+            <ProfessionalContent>
                 <ProfessionalWrap $dimension={dimension} src={ProfessionalImage} alt="Professional image of a South Asian brown woman, with parted dark brown hair, dark brown eyes, and a smiling friendly face. She is wearing a dark green dress with her arms crossed and her body slightly tilted."/>
-                {isMobile ? 
-                    <div style={{textAlign: 'center', marginTop: `${PaddingOrMargin.large}px`}}>
-                        <ContentTextBold $isMobile={isMobile}>Anita Chitlangia</ContentTextBold>
-                        <ContentText $isMobile={isMobile}>Functional Medicine Nutrition Counselor</ContentText>
-                        <SubtitleText $isMobile={isMobile}>Certified Health &amp; Wellness Coach</SubtitleText>
-                        <ContentText $isMobile={isMobile}>Founder of Wellness n Vitality</ContentText>
-                    </div> : 
-                    <ProfessionContentText>
-                        <ContentTextBold $isMobile={isMobile}>Anita Chitlangia</ContentTextBold>
-                        <ContentText $isMobile={isMobile}>Functional Medicine Nutrition Counselor</ContentText>
-                        <SubtitleText $isMobile={isMobile}>Certified Health &amp; Wellness Coach</SubtitleText>
-                        <ContentText $isMobile={isMobile}>Founder of Wellness n Vitality</ContentText>
-                    </ProfessionContentText>
-                }
+                <ProfessionContentText>
+                    <ContentTextBold $isMobile={isMobile}>Anita Chitlangia</ContentTextBold>
+                    <SubtitleText $isMobile={isMobile}>Functional Medicine Nutrition Counselor</SubtitleText>
+                    <SubtitleText $isMobile={isMobile}>Board Certified Health and Wellness Coach</SubtitleText>
+                    <SubtitleText $isMobile={isMobile}>Founder of Wellness n Vitality</SubtitleText>
+                </ProfessionContentText>
             </ProfessionalContent>
     );
  }
@@ -114,12 +106,11 @@ const ProfessionalWrap = styled.img<{$dimension: 'wide' | 'medium' | 'compact'}>
     object-fit: cover;
 `;
 
-const ProfessionalContent = styled.div<{$isMobile: boolean}>`
+const ProfessionalContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-self: center;
-    height: ${(props) => props.$isMobile ? '50vh' : 'auto'};
 `;
 
 const CallToAction = styled.div`
@@ -137,11 +128,11 @@ const Layout = styled(Row)<{$isMobile: boolean}>`
 `;
 
 const ProfessionContentText = styled.div`
-    position: absolute;
-    top: 220px;
-    right: 10%;
-    max-width: 170px;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    gap: ${PaddingOrMargin.small}px;
+    text-align: center;
+    margin-top: ${PaddingOrMargin.large}px;
 `;
 const SubtitleText = styled(ContentText)`
     font-style: italic;

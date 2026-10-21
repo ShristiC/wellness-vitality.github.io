@@ -54,7 +54,6 @@ const Wrapper = styled.div<{$isMobile: boolean}>`
 
 const TabRow = styled(Row)`
     justify-content: flex-start;
-    flex: 1;
 `;
 
 const Tab = styled.div<{$isFirstTab: boolean}>`
@@ -81,6 +80,7 @@ const Content = styled.div<{$isFirstTab: boolean, $isMobile: boolean}>`
     text-align: left;
     display: flex;
     flex-direction: column;
+    flex: 1; // Fill the extra height so the tabs above stay compact
     gap: ${PaddingOrMargin.large}px;
     // Let height adapt to content
     overflow: hidden; // Prevent content from overflowing during animation

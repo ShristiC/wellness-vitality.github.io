@@ -81,6 +81,7 @@ const Wrapper = styled.div<{$isMobile: boolean, $isMedium: boolean}>`
 const FirstRow = styled(Row)<{$isMobile: boolean}>`
     justify-content: space-between;
     flex-direction: ${(props) => props.$isMobile ? "column" : "row"};
+    flex-wrap: wrap;
     align-items: center;
     gap: 20px;
 `;
